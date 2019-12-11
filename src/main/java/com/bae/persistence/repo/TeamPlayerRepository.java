@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bae.persistence.domain.TeamPlayer;
 
 @Repository
-public interface TeamPlayersRepository extends JpaRepository<TeamPlayer, Long> {
+public interface TeamPlayerRepository extends JpaRepository<TeamPlayer, Long> {
 
 }
