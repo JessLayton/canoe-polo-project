@@ -2,6 +2,7 @@ package com.bae.business.service;
 
 import java.util.List;
 
+import com.bae.exceptions.PlayerNotFoundException;
 import com.bae.persistence.domain.TeamPlayer;
 import com.bae.persistence.repo.TeamPlayerRepository;
 
@@ -36,10 +37,12 @@ public class TeamPlayerService {
 		return playerRepo.save(player);
 	}
 
-	public String deletePlayer(Long id) {
-		playerRepo.deleteById(id);
-		return "Team player succesfully deleted";
+	public boolean deletePlayer(Long id) {
+		if (!this.playerRepo.existsById(id)) {
+			throw new PlayerNotFoundException();
+		}
+		this.playerRepo.deleteById(id);
+		return this.playerRepo.existsById(id);
 	}
-
 
 }
