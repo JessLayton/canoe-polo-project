@@ -5,7 +5,9 @@ import java.util.List;
 import com.bae.exceptions.PlayerNotFoundException;
 import com.bae.persistence.domain.TeamPlayer;
 import com.bae.persistence.repo.TeamPlayerRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TeamPlayerService {
 	
 	private TeamPlayerRepository playerRepo;
@@ -24,9 +26,11 @@ public class TeamPlayerService {
 	private void setUpPlayers() {
 		TeamPlayer jess = new TeamPlayer("Jess", "Layton");
 		TeamPlayer matt = new TeamPlayer("Matt", "Berry");
+		TeamPlayer james = new TeamPlayer("James", "Kiesslinger");
 		playerRepo.save(jess);
 		playerRepo.save(matt);
-		
+		playerRepo.save(james);
+
 	}
 
 	public TeamPlayer addNewPlayer(TeamPlayer player) {
