@@ -30,7 +30,6 @@ public class TeamPlayerService {
 		playerRepo.save(jess);
 		playerRepo.save(matt);
 		playerRepo.save(james);
-
 	}
 
 	public TeamPlayer addNewPlayer(TeamPlayer player) {
