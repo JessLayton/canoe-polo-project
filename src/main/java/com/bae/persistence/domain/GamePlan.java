@@ -1,13 +1,15 @@
 package com.bae.persistence.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import antlr.collections.List;
+
 
 @Entity
 public class GamePlan {
@@ -18,9 +20,14 @@ public class GamePlan {
 	private Date gameDate;
 	private String opposition;
 	private String location;
-	private List team;
 	
-	public GamePlan(Date gameDate, String oppostion, String location, List team, String opposition) {
+	@ManyToOne(targetEntity = TeamPlayer.class)
+	private List<TeamPlayer> team;
+	
+	
+	public GamePlan() {}
+	
+	public GamePlan(Date gameDate, String oppostion, String location, List<TeamPlayer> team, String opposition) {
 		this.gameDate = gameDate;
 		this.opposition = opposition;
 		this.location = location;
@@ -51,10 +58,10 @@ public class GamePlan {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public List getTeam() {
+	public List<TeamPlayer> getTeam() {
 		return team;
 	}
-	public void setTeam(List team) {
+	public void setTeam(List<TeamPlayer> team) {
 		this.team = team;
 	}
 	

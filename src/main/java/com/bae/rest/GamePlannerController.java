@@ -41,6 +41,4 @@ public class GamePlannerController {
     	return("Game deleted");
     }
     
-    
-
 }
