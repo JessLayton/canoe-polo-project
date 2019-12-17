@@ -1,8 +1,11 @@
 package com.bae.persistence.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,9 +18,10 @@ public class Team {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long teamId;
 	
-	@OneToMany
-	private List<TeamPlayer> players;
-
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<TeamPlayer> players= new LinkedList<>();
+	
+	
 	public Long getTeamId() {
 		return teamId;
 	}
@@ -34,10 +38,12 @@ public class Team {
 		this.players = players;
 	}
 	
-	@Override
-	public String toString() {
-		return "Team [" + players + "]";
-	}
+	public Team() {
+    }
+
+    public Team(String trainerName, List<TeamPlayer> players) {
+        this.players = players;
+    }
 	
 
 }

@@ -2,13 +2,14 @@ package com.bae.rest;
 
 import java.util.List;
 
-import com.bae.business.service.TeamPlayerService;
 import org.springframework.web.bind.annotation.*;
 
+import com.bae.business.TeamPlayerService;
 import com.bae.persistence.domain.TeamPlayer;
 
 
 @RestController
+@CrossOrigin
 public class TeamPlayerController {
     private TeamPlayerService playerService;
     private TeamPlayerController(TeamPlayerService playerService) {

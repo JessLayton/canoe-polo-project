@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class TeamPlayer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -15,7 +16,6 @@ public class TeamPlayer {
 	private String surname;
 
 	public TeamPlayer() {
-
 	}
 
 	public TeamPlayer(String firstName, String surname) {
@@ -51,15 +51,5 @@ public class TeamPlayer {
 	public String toString() {
 		return "TeamPlayer [id=" + id + ", firstName=" + firstName + ", surname=" + surname + "]";
 	}
-	
-	
+
 }
-
-		
-
-
-
-	
-		
-
-		

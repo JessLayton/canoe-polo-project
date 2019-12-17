@@ -1,4 +1,4 @@
-package com.bae.business.service;
+package com.bae.business;
 
 import java.util.List;
 
@@ -24,12 +24,7 @@ public class TeamPlayerService {
 	}
 
 	private void setUpPlayers() {
-		TeamPlayer jess = new TeamPlayer("Jess", "Layton");
-		TeamPlayer matt = new TeamPlayer("Matt", "Berry");
-		TeamPlayer james = new TeamPlayer("James", "Kiesslinger");
-		playerRepo.save(jess);
-		playerRepo.save(matt);
-		playerRepo.save(james);
+		
 	}
 
 	public TeamPlayer addNewPlayer(TeamPlayer player) {

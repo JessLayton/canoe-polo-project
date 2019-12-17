@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 
@@ -21,7 +21,7 @@ public class GamePlan {
 	private String opposition;
 	private String location;
 	
-	@ManyToOne(targetEntity = TeamPlayer.class)
+	@OneToOne(targetEntity = TeamPlayer.class) 
 	private List<TeamPlayer> team;
 	
 	
