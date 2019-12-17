@@ -1,22 +1,29 @@
 package com.bae.persistence.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class TeamPlayer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long id;
 	private String firstName;
 	private String surname;
+	
+	@ManyToMany(targetEntity = GamePlan.class)
+	@JoinTable(name="Game_Players")
+	private List<GamePlan> games;
 
-	public TeamPlayer() {
-	}
+	public TeamPlayer() {}
 
 	public TeamPlayer(String firstName, String surname) {
 		this.firstName = firstName;
