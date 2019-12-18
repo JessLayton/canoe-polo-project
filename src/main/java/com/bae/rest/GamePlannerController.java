@@ -16,9 +16,7 @@ import com.bae.persistence.domain.GamePlan;
 @RestController
 public class GamePlannerController {
 	private GamePlannerService plannerService;
-    private GamePlannerController(GamePlannerService plannerService) {
-        this.plannerService = plannerService;
-    }
+    
     
     @GetMapping("/gameplan")
     public List<GamePlan> getAllGamePlan() {

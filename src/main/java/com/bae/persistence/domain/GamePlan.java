@@ -29,7 +29,7 @@ public class GamePlan {
 	
 	public GamePlan() {}
 	
-	public GamePlan(Date gameDate, String oppostion, String location, List<TeamPlayer> team, String opposition) {
+	public GamePlan(Date gameDate, String opposition, String location, List<TeamPlayer> team) {
 		this.gameDate = gameDate;
 		this.opposition = opposition;
 		this.location = location;

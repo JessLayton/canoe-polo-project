@@ -12,10 +12,7 @@ import com.bae.persistence.domain.TeamPlayer;
 @CrossOrigin
 public class TeamPlayerController {
     private TeamPlayerService playerService;
-    private TeamPlayerController(TeamPlayerService playerService) {
-        this.playerService = playerService;
-    }
-
+    
     @GetMapping("/player")
     public List<TeamPlayer> getAllPlayer() {
         return playerService.getAllPlayer();

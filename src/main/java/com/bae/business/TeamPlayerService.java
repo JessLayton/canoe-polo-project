@@ -17,14 +17,7 @@ public class TeamPlayerService {
 	}
 
 	public List<TeamPlayer> getAllPlayer() {
-		if (playerRepo.findAll().isEmpty()) {
-			setUpPlayers();
-		}
 		return playerRepo.findAll();
-	}
-
-	private void setUpPlayers() {
-		
 	}
 
 	public TeamPlayer addNewPlayer(TeamPlayer player) {
