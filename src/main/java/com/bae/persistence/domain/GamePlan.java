@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 
 
@@ -21,7 +22,8 @@ public class GamePlan {
 	private String opposition;
 	private String location;
 	
-	@ManyToOne(targetEntity = TeamPlayer.class)
+	@ManyToMany(targetEntity = TeamPlayer.class) 
+	@JoinTable(name="Game_Players")
 	private List<TeamPlayer> team;
 	
 	
@@ -71,5 +73,6 @@ public class GamePlan {
 				+ ", opposition = " + opposition + ", location = " + location + ", team: " + team + "]";
 	}
 	
+		
 }
 

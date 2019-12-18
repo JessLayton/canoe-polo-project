@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bae.business.service.GamePlannerService;
+import com.bae.business.GamePlannerService;
 import com.bae.persistence.domain.GamePlan;
 
 

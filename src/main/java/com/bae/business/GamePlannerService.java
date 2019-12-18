@@ -1,4 +1,4 @@
-package com.bae.business.service;
+package com.bae.business;
 
 import java.util.List;
 
