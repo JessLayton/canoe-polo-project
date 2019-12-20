@@ -2,6 +2,8 @@ package com.bae.rest;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.*;
 
 import com.bae.business.TeamPlayerService;
@@ -22,11 +24,11 @@ public class TeamPlayerController {
     public TeamPlayer addNewTrainer(@RequestBody TeamPlayer player) {
         return playerService.addNewPlayer(player);
     }
-
+      
     @PutMapping("/player")
-    public TeamPlayer updateTrainer(@RequestBody TeamPlayer player) {
-        return playerService.updatePlayer(player);
-    }
+	public TeamPlayer updatePlayer(@PathParam("id") Long id, @RequestBody TeamPlayer player) {
+		return this.playerService.updatePlayer(player, id);
+	}
 
     @DeleteMapping("/player/{id}")
     public String deletePlayer(@PathVariable long id) {
