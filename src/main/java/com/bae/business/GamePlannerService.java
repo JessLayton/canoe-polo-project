@@ -57,7 +57,6 @@ public class GamePlannerService {
 		this.plannerRepo.deleteById(gameId);
 		return this.plannerRepo.existsById(gameId);
 	}
-
 }
 
 
