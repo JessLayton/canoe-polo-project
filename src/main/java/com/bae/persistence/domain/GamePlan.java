@@ -4,6 +4,7 @@ package com.bae.persistence.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class GamePlan {
 	private String opposition;
 	private String location;
 	
-	@ManyToMany(targetEntity = TeamPlayer.class) 
+	@ManyToMany(targetEntity = TeamPlayer.class, fetch=FetchType.EAGER) 
 	@JoinTable(name="Game_Players")
 	private List<TeamPlayer> team;
 	

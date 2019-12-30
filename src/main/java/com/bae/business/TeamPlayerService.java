@@ -24,7 +24,7 @@ public class TeamPlayerService {
 	public List<TeamPlayer> getAllPlayer() {
 		return playerRepo.findAll();
 	}
-
+	
 	public TeamPlayer addNewPlayer(TeamPlayer player) {
 		return playerRepo.save(player);
 	}

@@ -1,4 +1,4 @@
-package com.bae.business.service;
+package com.bae.business;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -1,4 +1,4 @@
-package com.bae.business.service;
+package com.bae.business;
 
 
 import static org.assertj.core.api.Assertions.assertThat;

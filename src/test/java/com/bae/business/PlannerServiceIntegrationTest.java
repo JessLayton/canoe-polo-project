@@ -1,10 +1,11 @@
-package com.bae.business.service;
+package com.bae.business;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -35,7 +36,7 @@ public class PlannerServiceIntegrationTest {
 	
 	private List<GamePlan> gameList;
 	
-	private TeamPlayer player;
+	
 	private List<TeamPlayer> team;
 	
 
@@ -43,7 +44,6 @@ public class PlannerServiceIntegrationTest {
 	public void init() {
 		this.team = new ArrayList<>();
 		this.gameList = new ArrayList<>();
-		this.player = new TeamPlayer("Luke", "Cottenham");
 		this.gameList.add(testGamePlan);
 		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
 		
@@ -57,10 +57,31 @@ public class PlannerServiceIntegrationTest {
 		assertEquals(this.testPlanWithID, this.service.addNewGamePlan(testGamePlan));
 	}
 	
+		
 	@Test
 	public void testDeleteGamePlan() {
-		assertThat(this.service.deleteGamePlan(this.testPlanWithID.getId())).isFalse();
+		assertThat(this.service.deleteGamePlan(this.testPlanWithID.getFutureGameId())).isFalse();
 	}
 	
+	@Test
+	public void testFindGamePlanByID() {
+		assertEquals(this.service.findGamePlanByID(this.testPlanWithID.getFutureGameId()).toString(), this.testPlanWithID.toString());
+	}
+
+	@Test
+	public void testGetAllGamePlan() {
+		assertThat(this.service.getAllGamePlan().toString()).isEqualTo(Arrays.asList(new GamePlan[] {this.testPlanWithID }).toString());
+	}
+
+	@Test
+	public void testUpdateGamePlan() {
+		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 4, 16), "MUCC", "Salford", team);
+		GamePlan updateGamePlan = new GamePlan(newGamePlan.getGameDate(), newGamePlan.getOpposition(), newGamePlan.getLocation(), newGamePlan.getTeam());
+		updateGamePlan.setFutureGameId(this.testPlanWithID.getFutureGameId());
+
+		assertThat(this.service.updateGamePlan(newGamePlan, this.testPlanWithID.getFutureGameId()).toString()).isEqualTo(updateGamePlan.toString());
+	}
+
+
 	
 }
