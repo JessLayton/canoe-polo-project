@@ -23,7 +23,7 @@ public class GamePlannerService {
 	
 	public List<GamePlan> getAllGamePlan() {
 		if (plannerRepo.findAll().isEmpty()) {
-			setUpGamePlans(new GamePlan());
+			addNewGamePlan(new GamePlan());
 		}
 		return plannerRepo.findAll();
 	}
@@ -33,10 +33,7 @@ public class GamePlannerService {
 				() -> new GameNotFoundException());
 	}
 
-	public GamePlan setUpGamePlans(GamePlan gameplan) {
-		return this.plannerRepo.save(gameplan);
-		
-	}
+
 	public GamePlan addNewGamePlan(GamePlan gameplan) {
 		return plannerRepo.save(gameplan);
 	}

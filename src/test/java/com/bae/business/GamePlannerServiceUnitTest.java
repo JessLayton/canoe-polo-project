@@ -58,10 +58,10 @@ public class GamePlannerServiceUnitTest {
 	}
 
 	@Test
-	public void createGamePlanTest() {
+	public void addNewGamePlanTest() {
 		when(this.repo.save(testGamePlan)).thenReturn(testGamePlanWithID);
 
-		assertEquals(this.testGamePlanWithID, this.service.setUpGamePlans(testGamePlan));
+		assertEquals(this.testGamePlanWithID, this.service.addNewGamePlan(testGamePlan));
 
 		verify(this.repo, times(1)).save(this.testGamePlan);
 	}
