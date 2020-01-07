@@ -23,22 +23,29 @@ public class GamePlannerService {
 	
 	public List<GamePlan> getAllGamePlan() {
 		if (plannerRepo.findAll().isEmpty()) {
-			setUpGamePlans(new GamePlan());
+			addNewGamePlan(new GamePlan());
 		}
 		return plannerRepo.findAll();
 	}
-
-	private GamePlan setUpGamePlans(GamePlan gameplan) {
-		return this.plannerRepo.save(gameplan);
-		
+	
+	public GamePlan findGamePlanByID(Long gameId) {
+		return this.plannerRepo.findById(gameId).orElseThrow(
+				() -> new GameNotFoundException());
 	}
+
+
 	public GamePlan addNewGamePlan(GamePlan gameplan) {
 		return plannerRepo.save(gameplan);
 	}
 
-	public GamePlan updateGamePlan(GamePlan gameplan) {
-		return plannerRepo.save(gameplan);
-	}
+	public GamePlan updateGamePlan(GamePlan gameplan, Long gameId) {
+		GamePlan toUpdate = findGamePlanByID(gameId);
+		toUpdate.setGameDate(gameplan.getGameDate());
+		toUpdate.setOpposition(gameplan.getOpposition());
+		toUpdate.setLocation(gameplan.getLocation());
+		toUpdate.setTeam(gameplan.getTeam());
+		return this.plannerRepo.save(toUpdate);
+		}
 
 	public boolean deleteGamePlan(Long gameId) {
 		if (!this.plannerRepo.existsById(gameId)) {
@@ -47,7 +54,6 @@ public class GamePlannerService {
 		this.plannerRepo.deleteById(gameId);
 		return this.plannerRepo.existsById(gameId);
 	}
-
 }
 
 

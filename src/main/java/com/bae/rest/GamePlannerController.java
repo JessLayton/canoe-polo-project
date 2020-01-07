@@ -2,8 +2,11 @@ package com.bae.rest;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +26,19 @@ public class GamePlannerController {
         return plannerService.getAllGamePlan();
     }
     
+    @GetMapping("/get/{id}")
+	public GamePlan getGamePlan(@PathVariable Long gameId) {
+		return this.plannerService.findGamePlanByID(gameId);
+	}
+    
     @PostMapping("/gameplan")
     public GamePlan addNewGamePlan(@RequestBody GamePlan gameplan) {
         return plannerService.addNewGamePlan(gameplan);
     }
     
     @PutMapping("/gameplan")
-    public GamePlan updateGamePlan(@RequestBody GamePlan gameplan) {
-    	return plannerService.updateGamePlan(gameplan);
+    public GamePlan updateGamePlan(@PathParam("id") Long gameId, @RequestBody GamePlan gameplan) {
+    	return this.plannerService.updateGamePlan(gameplan, gameId);
     }
     
     @DeleteMapping("/gameplan/{gameId}")

@@ -16,16 +16,25 @@ public class TeamPlayerService {
 		this.playerRepo = playerRepo;
 	}
 
+	public TeamPlayer findPlayerByID(Long id) {
+		return this.playerRepo.findById(id).orElseThrow(
+				() -> new PlayerNotFoundException());
+	}
+	
 	public List<TeamPlayer> getAllPlayer() {
 		return playerRepo.findAll();
 	}
-
+	
 	public TeamPlayer addNewPlayer(TeamPlayer player) {
 		return playerRepo.save(player);
 	}
 
-	public TeamPlayer updatePlayer(TeamPlayer player) {
-		return playerRepo.save(player);
+	
+	public TeamPlayer updatePlayer(TeamPlayer player, Long id) {
+		TeamPlayer toUpdate = findPlayerByID(id);
+		toUpdate.setFirstName(player.getFirstName());
+		toUpdate.setSurname(player.getSurname());
+		return this.playerRepo.save(toUpdate);
 	}
 
 	public boolean deletePlayer(Long id) {
