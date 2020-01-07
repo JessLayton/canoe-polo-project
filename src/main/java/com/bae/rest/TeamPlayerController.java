@@ -30,7 +30,7 @@ public class TeamPlayerController {
     }
     
     @GetMapping("/get/{id}")
-	public TeamPlayer getDuck(@PathVariable Long id) {
+	public TeamPlayer getPlayer(@PathVariable Long id) {
 		return this.playerService.findPlayerByID(id);
 	}
 
