@@ -1,8 +1,10 @@
+"use strict"
+
 function createPlayer(){
-    var fName = document.getElementById("InputFirstName").value;
-    var sName = document.getElementById("InputSurname").value;
+    let fName = document.getElementById("InputFirstName").value;
+    let sName = document.getElementById("InputSurname").value;
     const url = 'http://localhost:8080/player/player';
-    var data = {"firstName": fName, "surname": sName};
+    let data = {"firstName": fName, "surname": sName};
     axios.post(url, data
     ).then((response) => {
         console.log(response);
@@ -32,8 +34,8 @@ function populateSelect(){
 }
 
 function addToScreen(item, index){
-    var option = document.createElement("option");
-    var select = document.getElementById("playerList");
+    let option = document.createElement("option");
+    let select = document.getElementById("playerList");
     option.innerText = (item.firstName + " " + item.surname);
     select.appendChild(option);
 }

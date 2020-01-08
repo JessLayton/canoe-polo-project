@@ -24,7 +24,7 @@
             <br>
           <h4> Date: </h4>
              <br>
-          <input id="inputDate" type="date" class="form-control" id="InputGameDate" aria-describedby="GameDate">
+          <input id="InputDate" class="form-control" aria-describedby="GameDate">
           <br>
         </div>
         <div class="form-group">
@@ -48,15 +48,19 @@
         <br>
        
         <div style="width:10%; float:left;">
-            <a href="newplayer.html"><button class = "button"> Add player </button></a>
+            <a href="newplayer.html"><button class ="button" > Add player </button></a>
               
         </div>
         
             <br>
             
         <div style="width:10%; float:right;">
-          <button class = "button"> Submit </button>        
-        </div>   
+          <button class="button" onclick="createGame()"> Submit </button>        
+        </div>  
+        
+        <div>
+        <a href="newgame.html"><button class = "button"> Back </button></a>
+      </div> 
     
     </div>
 
@@ -64,6 +68,7 @@
 
  
   <script src="selectplayer.js"></script>
+  <script src="addgame.js"></script>
 
 </body>
 
