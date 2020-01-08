@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>Canoe Polo Planner</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href= "style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+</head>
+
+<body>
+<div id="nav">
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="index.html"><button class = "home-button"> Home </button></a>
+    </nav>
+</div>
+
+ 
+ <div id="container">
+   <div>
+  <h2> ADD PLAYER </h2>
+  <br>
+  <h4> First Name: </h4>
+  <br>
+  </div>
+  
+    <form id="posterForm" >
+        <div class="form-group">
+          
+          
+          <input type="text" class="form-control" id="InputFirstName">
+          <br>
+        </div>
+        <div class="form-group">
+          <h4>  Surname:  </h4>
+          <input type="text" class="form-control" id="InputSurname">
+        </div>
+
+        <ul id="selectedPlayers"></ul>
+
+
+        <br>
+        
+        
+      </form>
+    
+      <div>
+        <button class="button" onclick="createPlayer()"> Add New Player </button>
+      </div>
+
+      <br>
+
+      <div>
+        <a href="newgame.html"><button class = "button"> Back </button></a>
+      </div>
+
+  </div>
+
+ 
+  <script src="index.js"></script>
+  <script src="selectplayers.js"></script>
+
+</body>
+
+</html>
