@@ -1,7 +1,7 @@
 function createPlayer(){
     var fName = document.getElementById("InputFirstName").value;
     var sName = document.getElementById("InputSurname").value;
-    const url = 'http://localhost:8081/player/player';
+    const url = 'http://localhost:8080/player/player';
     var data = {"firstName": fName, "surname": sName};
     axios.post(url, data
     ).then((response) => {
@@ -15,7 +15,7 @@ function createPlayer(){
 }
 
 function populateSelect(){ 
-    const url = 'http://localhost:8081/player/player';
+    const url = 'http://localhost:8080/player/player';
      
     
     axios.get(url

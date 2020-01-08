@@ -1,8 +1,7 @@
 <html>
 <head>
     <title>Canoe Polo Planner</title> 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
     <link rel="stylesheet" href= "style.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -30,12 +29,12 @@
         </div>
         <div class="form-group">
           <h4>Opposition:</h4>
-          <input type="opposition" class="form-control" id="InputOpposition">
+          <input type="text" class="form-control" id="InputOpposition">
         </div>
         <br>
         <div class="form-group">
             <h4>Location:</h4>
-            <input type="location" class="form-control" id="InputLocation">
+            <input type="text" class="form-control" id="InputLocation">
           </div>
         <br>
           <div class="form-group">
@@ -44,25 +43,27 @@
              <option value="0">Choose 5 players for team</option>
             </select>
               </div>
-            <div class="invalid-feedback" >Invalid imput</div>
+            <div class="invalid-feedback" >Invalid input</div>
           </form>
         <br>
        
-        <div class="linkButton" style="width:10%; float:left;">
-            <a href="newplayer.html" role="button" aria-pressed="true">Add player</a>
+        <div style="width:10%; float:left;">
+            <a href="newplayer.html"><button class = "button"> Add player </button></a>
+              
         </div>
+        
             <br>
-        <div class="linkButton" style="width:10%; float:right;">
-          <a href="index.html" role="button" aria-pressed="true">Submit</a>
+            
+        <div style="width:10%; float:right;">
+          <button class = "button"> Submit </button>        
         </div>   
     
     </div>
 
 
 
-  <script src="index.js"></script>
-  <script src="newgame.js"></script>
-  <script src="selectplayers.js"></script>
+ 
+  <script src="selectplayer.js"></script>
 
 </body>
 
