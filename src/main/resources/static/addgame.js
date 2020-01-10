@@ -1,25 +1,28 @@
 "use strict"
 
-let team = document.getElementById("playerList").getElementsByTagName("option");
+let playerRoster = document.getElementById("playerList").getElementsByTagName("option");
 
-function createTeam(team) {
+function createTeam(playerRoster) {
 	
 	let result = [];
-	let players = team;
+	let players = playerRoster;
 	for (let i=0; i < players.length; i++) {
 	    let player = players[i];
 	    
 	    if (player.selected) {
-	    	result.push(player.value || player.text);
+	    	result = playerRoster.options[playerList.selectedIndex].value;
+            results.push(result);
+            console.log(results);
 	    	}
-	    }
-	return result;
-	}
+        }
+    }
+        
+      
 
 
 
 function createGame(){
-	let result = createTeam(team);
+	let result = createTeam(playerRoster);
     let dt = document.getElementById("InputDate").value;
     console.log(dt);
     let opp = document.getElementById("InputOpposition").value;
@@ -35,6 +38,15 @@ function createGame(){
         console.log(e);
         //refresh with ?error
     });
+
+    let url2 = 'http://localhost:8080/gameplan/{gameId}';
+    axios.update(url2, finalTeam
+    ).then((response) => {
+    console.log(response);
+    }).catch(e => {
+    console.log(e);
+    });
+     
 }
 
 function populateTable(){ 
