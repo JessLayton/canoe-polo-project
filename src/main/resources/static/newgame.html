@@ -10,7 +10,7 @@
 <div id="nav">
     <nav class="navbar navbar-dark bg-dark">
         <nav class="navbar navbar-dark bg-dark">
-            <a href="index.html"><button class = "home-button"> Home </button></a>
+            <button class="home-button" onclick="window.location.href='index.html'"> Home </button>
         </nav>
     </nav>
 </div>
@@ -48,19 +48,22 @@
         <br>
        
         <div style="width:10%; float:left;">
-            <a href="newplayer.html"><button class ="button" > Add player </button></a>
-              
+            
+            <button class="button" onclick="window.location.href='newplayer.html'"> Add player </button>
         </div>
         
             <br>
             
         <div style="width:10%; float:right;">
-          <button class="button" onclick="createTeam(playerRoster)"> Submit </button>        
+          <button class="button" onclick="newGame()"> Submit </button>        
         </div>  
+
+     <br />
         
         <div>
-        <a href="newgame.html"><button class = "button"> Back </button></a>
-      </div> 
+            
+            <button class="home-button" onclick="window.location.href='index.html'"> Back </button>
+        </div> 
     
     </div>
 
@@ -68,7 +71,7 @@
 
  
   <script src="selectplayer.js"></script>
-  <script src="addgame.js"></script>
+  <script src="newgame.js"></script>
 
 </body>
 
