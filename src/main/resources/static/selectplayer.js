@@ -3,21 +3,22 @@
 function createPlayer(){
     let fName = document.getElementById("InputFirstName").value;
     let sName = document.getElementById("InputSurname").value;
-    const url = 'http://localhost:8080/player/player';
+    const url = 'http://localhost:8081/player/player';
     let data = {"firstName": fName, "surname": sName};
     axios.post(url, data)
     .then((response) => {
+    	window.alert("Player Added");
         console.log(response);})
-        //redirect back
+        
     .catch(e => {
+    	window.alert("Player Not Added ");
         console.log(e);
-        //refresh with ?error
     });
 
 }
 
 function populateSelect(){ 
-    const url = 'http://localhost:8080/player/player';
+    const url = 'http://localhost:8081/player/player';
      
     
     axios.get(url)

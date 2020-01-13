@@ -5,9 +5,9 @@ function newGame(){
     let opp = document.getElementById("InputOpposition").value;
     let loc = document.getElementById("InputLocation").value;
     let tm = [];
-    const url2 = 'http://localhost:8080/gameplan';
-    let gameData = {"gameDate": dt, "opposition": opp, "location": loc, "team": tm};
-    axios.post(url2, gameData)
+    const url2 = 'http://localhost:8081/gameplan';
+    let data = {"gameDate": dt, "opposition": opp, "location": loc, "team": tm};
+    axios.post(url2, data)
     .then((response) => {
         console.log(response);})
         //redirect back
@@ -19,11 +19,11 @@ function newGame(){
 }
 
 function populateTable(){ 
-    const url2 = 'http://localhost:8080/gameplan';
+    const url2 = 'http://localhost:8081/gameplan';
      
     axios.get(url2)
     	.then((response) => {
-    		addToTable(response.gameData);
+    		addToTable();
     		console.log(response);})
     		//redirect back
         .catch(e => {
@@ -33,19 +33,27 @@ function populateTable(){
 
 	}
 
-function addToTable() {
+function addToTable(item, i) {
     let table1 = document.getElementById("plannerTable");
     let row = table1.insertRow(1);
-        
-    let cell1 = row.insertCell(0);
-    let cell2 = row.insertCell(1);
-    let cell3 = row.insertCell(2);
-    let cell4 = row.insertCell(3);
-    cell1.innerHTML = (value.gameDate);
-    cell2.innerHTML = (value.opposition);
-    cell3.innerHTML = (value.location);
-    cell4.innerHTML = (value.team);
+
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var count = table.rows.length;
+    for (var i = 0; i < count; i++) {   // ?
+        console.log(table1.rows[i]);    // ?
+
+        cell1.innertext = item.gameDate;
+        console.log(item.gameDate);
+        cell2.innertext = item.opposition;
+        cell3.innertext = item.location;
+        cell4.innertext = item.team;
+    }
 }
+
+
 
     
     
