@@ -36,20 +36,22 @@ function populateTable(){
 	}
 
 function addToTable(data) {
-    let table1 = document.getElementById("plannerTable");
-    let row = table1.insertRow(1);
-
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
     
-    for (let d of data) {  
-        cell1.innerHTML = d.gameDate;
-        cell2.innerHTML = d.opposition;
-        cell3.innerHTML = d.location;
-        cell4.innerHTML = d.team;
+    let table1 = document.getElementById("plannerTable");
+    for (let i =0; i<data.length; i++){
+        let row = table1.insertRow(i+1);
+
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+    
+            cell1.innerHTML = data[i].gameDate;
+            cell2.innerHTML = data[i].opposition;
+            cell3.innerHTML = data[i].location;
+            cell4.innerHTML = data[i].team;
     }
+    
 }
 
 
