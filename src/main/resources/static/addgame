@@ -1,83 +1,58 @@
-"use strict"
+let playerRoster = document.getElementById("playerList").getElementsByTagName("option").value;
 
-let playerRoster = document.getElementById("playerList").getElementsByTagName("option");
-
-function createTeam(playerRoster) {
-	
-	let result = [];
-	let players = playerRoster;
-	for (let i=0; i < players.length; i++) {
-	    let player = players[i];
+function createTeam(tm, playerRoster) {
+	let selectablePlayers = playerRoster;
+	for (let i=0; i < selectablePlayers.length; i++) {
+	    let player = selectablePlayers[i];
 	    
 	    if (player.selected) {
 	    	result = playerRoster.options[playerList.selectedIndex].value;
-            results.push(result);
-            console.log(results);
+            tm.push(result);
+            console.log(tm);
 	    	}
         }
-    }
-        
-      
-
-
-
-function createGame(){
-	let result = createTeam(playerRoster);
-    let dt = document.getElementById("InputDate").value;
-    console.log(dt);
-    let opp = document.getElementById("InputOpposition").value;
-    let loc = document.getElementById("InputLocation").value;
-    let tm = result;
-    let data = {"gameDate": dt, "opposition": opp, "location": loc, "team": tm};
-    const url = 'http://localhost:8080/gameplan';
-    axios.post(url, data
-    ).then((response) => {
-        console.log(response);
-        //redirect back
-    }).catch(e => {
+	const url3 = 'http://localhost:8081/gameplan/{gameId}'
+	axios.put(url3, tm)
+	.then((response) => {
+        addTeamToPlan();
+        console.log(response);})
+    .catch(e => {
         console.log(e);
-        //refresh with ?error
     });
-
-    let url2 = 'http://localhost:8080/gameplan/{gameId}';
-    axios.update(url2, finalTeam
-    ).then((response) => {
-    console.log(response);
-    }).catch(e => {
-    console.log(e);
-    });
-     
+	
 }
 
-function populateTable(){ 
-    const url = 'http://localhost:8080/gameplan';
- 
-    axios.get(url
+function getPlayerById(playerId){ 
+    let url3 = 'http://localhost:8081/player/{id}';
+    
+    playerId = document.getElementById(playerRoster.option.value);
+
+    return axios.get(url, playerId
         ).then((response) => {
-            response.data.forEach(addGame);
-            
             console.log(response);
-            //redirect back
         }).catch(e => {
             console.log(e);
-            //refresh with ?error
         });
-    
     }
 
+/*
+function addTeamToPlan() {
+	const url3 = 'http://localhost:8081/gameplan/{gameId}'
+	axios.put(url3)
+    .then((response) => {
+        addTeamToPlan();
+        console.log(response);})
+    .catch(e => {
+        console.log(e);
+    });
+	
+}
+
+*/
+
     
-function addGame() {
-	let table1 = document.getElementById('plannerTable'),
-    	row = table1.insertRow(table1.rows.length),
-        i;
-    for (i = 0; i < table1.rows[0].cells.length; i++) {
-        createCell(row.insertCell(item.gameDate));
-        createCell(row.insertCell(item.opposition));
-        createCell(row.insertCell(item.location));
-        createCell(row.insertCell(item.result));
-    }
- }
-    
+
+
 
     
     

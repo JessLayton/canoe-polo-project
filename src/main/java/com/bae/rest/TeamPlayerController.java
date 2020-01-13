@@ -16,6 +16,7 @@ import com.bae.persistence.domain.TeamPlayer;
 @CrossOrigin
 public class TeamPlayerController {
     
+	@Autowired
 	private TeamPlayerService playerService;
 	
 	@Autowired

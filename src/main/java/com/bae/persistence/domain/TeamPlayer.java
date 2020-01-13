@@ -14,13 +14,11 @@ public class TeamPlayer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long id;
 	private String firstName;
 	private String surname;
 	
-	@ManyToMany(targetEntity = GamePlan.class)
-	@JoinTable(name="Game_Players")
+	@ManyToMany(mappedBy = "team")
 	private List<GamePlan> games;
 
 	public TeamPlayer() {}
