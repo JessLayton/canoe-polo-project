@@ -1,63 +1,64 @@
 <html>
+
 <head>
-    <title>Canoe Polo Planner</title> 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href= "style.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  
+  <title>Canoe Polo Planner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 
 <body>
-<div id="nav">
+  <div id="nav">
     <nav class="navbar navbar-dark bg-dark">
-        
-        <button class="home-button" onclick="window.location.href='index.html'"> Home </button>
+
+      <button class="home-button" onclick="location.href='index.html'"> Home </button>
     </nav>
-</div>
-
- 
- <div id="container">
-   <div>
-  <h2> ADD PLAYER </h2>
-  <br>
-  <h4> First Name: </h4>
-  <br>
   </div>
-  
-    <form id="posterForm" >
-        <div class="form-group">
-          
-          
-          <input type="text" class="form-control" id="InputFirstName">
-          <br>
-        </div>
-        <div class="form-group">
-          <h4>  Surname:  </h4>
-          <input type="text" class="form-control" id="InputSurname">
-        </div>
-
-        <ul id="selectedPlayers"></ul>
 
 
+  <div id="container">
+    <div>
+      <h2> ADD PLAYER </h2>
+      <br>
+      <h4> First Name: </h4>
+      <br>
+    </div>
+
+    <form id="posterForm">
+      <div class="form-group">
+
+
+        <input type="text" class="form-control" id="InputFirstName">
         <br>
-        
-        
-      </form>
-    
-      <div>
-        <button class="button" onclick="createPlayer()"> Add New Player </button>
       </div>
+      <div class="form-group">
+        <h4> Surname: </h4>
+        <input type="text" class="form-control" id="InputSurname">
+      </div>
+
+      <ul id="selectedPlayers"></ul>
+
 
       <br>
 
-      <div>
-             <button class="button" onclick="window.location.href='newgame.html'"> Back </button>
-      </div>
+
+    </form>
+
+    <div>
+      <button class="button" onclick="createPlayer()"> Add New Player </button>
+    </div>
+
+    <br>
+
+    <div>
+      <button class="button" onclick="location.href='newgame.html'"> Back </button>
+    </div>
 
   </div>
 
- 
-  
+
+
   <script src="selectplayer.js"></script>
 
 </body>

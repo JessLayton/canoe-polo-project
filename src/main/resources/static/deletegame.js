@@ -1,35 +1,23 @@
 "use strict"
 
-function GamePlanHandler() {
-    let plannerTable = document.getElementById("plannerTable");
-    let plannerTableRows = plannerTable.getElementsByTagName("tr");
-    for (i = 0; i < plannerTableRows.length; i++) {
-        let selectedRow = plannerTable.plannerTableRows[i];
-        let createClickHandler = 
-            function(plannerTableRow) {
-        		selectedRow.onclick = createClickHandler(selectedRow);
-        }
-    }
+let gamePlanArray = axios.get("http://localhost:8081/gameplan")
+	.then(response => { console.log(response.data); return response.data });
+
+
+
+function deleteGame() {
+
+	gamePlanArray.then(data => {
+		const url = 'http://localhost:8081/gameplan/'
+		for (let gamePlan of data) {
+			axios.delete("http://localhost:8081/gameplan/" + gamePlan.futureGameId)
+				.then(function (response) {
+					console.log(response);
+					location.reload();
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		}
+	});
 }
-        
-window.onload = GamePlanHandler();
-
-/*
-function deleteGamePlan() {
-  document.getElementById("plannerTable").deleteRow(i);
-}
-
-axios.delete('http://localhost:8081/gameplan', {
-    params: {
-      gameId = futureGameId
-    }
-  })
-
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  }); 
-
-

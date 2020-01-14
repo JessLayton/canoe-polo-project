@@ -1,75 +1,76 @@
 <html>
+
 <head>
-    <title>Canoe Polo Planner</title> 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href= "style.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Canoe Polo Planner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body onload="populateSelect()">
-<div id="nav">
+  <div id="nav">
     <nav class="navbar navbar-dark bg-dark">
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="home-button" onclick="window.location.href='index.html'"> Home </button>
-        </nav>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="home-button" onclick="window.location.href='index.html'"> Home </button>
+      </nav>
     </nav>
-</div>
+  </div>
 
- 
- <div id="container">
-  
-    <form >
+
+  <div id="container">
+
+    <form>
       <div class="form-group">
-         <h2> ADD GAME </h2>
-            <br>
-          <h4> Date: </h4>
-             <br>
-          <input id="InputDate" class="form-control" aria-describedby="GameDate">
-          <br>
-        </div>
-        <div class="form-group">
-          <h4>Opposition:</h4>
-          <input type="text" class="form-control" id="InputOpposition">
-        </div>
+        <h2> ADD GAME </h2>
         <br>
-        <div class="form-group">
-            <h4>Location:</h4>
-            <input type="text" class="form-control" id="InputLocation">
-          </div>
+        <h4> Date: </h4>
         <br>
-          <div class="form-group">
-            <h4>Add Team Players:</h4>
-            <select id="playerList" class="custom-select" required multiple=true>
-             <option value="0" disabled >Choose 5 players for team</option>
-            </select>
-              </div>
-            <div class="invalid-feedback" >Invalid input</div>
-          </form>
+        <input id="InputDate" class="form-control" aria-describedby="GameDate">
         <br>
-       
-        <div style="width:10%; float:left;">
-            
-            <button class="button" onclick="window.location.href='newplayer.html'"> Add player </button>
-        </div>
-        
-            <br>
-            
-        <div style="width:10%; float:right;">
-          <button class="button" onclick="newGame()"> Submit </button>        
-        </div>  
+      </div>
+      <div class="form-group">
+        <h4>Opposition:</h4>
+        <input type="text" class="form-control" id="InputOpposition">
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Location:</h4>
+        <input type="text" class="form-control" id="InputLocation">
+      </div>
+      <br>
+      <div class="form-group">
+        <h4>Add Team Players:</h4>
+        <select id="playerList" class="custom-select" required multiple=true>
+          <option value="0" disabled>Choose 5 players for team</option>
+        </select>
+      </div>
+      <div class="invalid-feedback">Invalid input</div>
+    </form>
+    <br>
 
-     <br />
-        
-        <div>
-            
-            <button class="home-button" onclick="window.location.href='index.html'"> Back </button>
-        </div> 
-    
+    <div style="width:10%; float:left;">
+
+      <button class="button" onclick="window.location.href='newplayer.html'"> Add player </button>
     </div>
 
+    <br>
+
+    <div style="width:10%; float:right;">
+      <button class="button" onclick="newGame()"> Submit </button>
+    </div>
+
+    <br />
+
+    <div>
+
+      <button class="home-button" onclick="location.href='index.html'"> Back </button>
+    </div>
+
+  </div>
 
 
- 
+
+
   <script src="selectplayer.js"></script>
   <script src="newgame.js"></script>
 
