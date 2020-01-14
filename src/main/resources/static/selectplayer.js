@@ -11,7 +11,7 @@ function createPlayer(){
         console.log(response);})
         
     .catch(e => {
-    	window.alert("Player Not Added ");
+    	window.alert("Player Not Added");
         console.log(e);
     });
 
@@ -19,8 +19,7 @@ function createPlayer(){
 
 function populateSelect(){ 
     const url = 'http://localhost:8081/player/player';
-     
-    
+         
     axios.get(url)
     	.then((response) => {
     		addToScreen(response.data);
