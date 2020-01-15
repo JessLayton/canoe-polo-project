@@ -12,11 +12,10 @@ import com.bae.persistence.domain.TeamPlayer;
 
 
 @RestController
-@RequestMapping("/player")
+@RequestMapping("/teamPlayers")
 @CrossOrigin
 public class TeamPlayerController {
     
-	@Autowired
 	private TeamPlayerService playerService;
 	
 	@Autowired
@@ -25,27 +24,27 @@ public class TeamPlayerController {
 		this.playerService = playerService;
 	}
     
-    @GetMapping("/player")
+	@GetMapping("/getAllPlayers")
     public List<TeamPlayer> getAllPlayer() {
         return playerService.getAllPlayer();
     }
     
-    @GetMapping("/get/{id}")
+    @GetMapping("/getPlayer/{id}")
 	public TeamPlayer getPlayer(@PathVariable Long id) {
 		return this.playerService.findPlayerByID(id);
 	}
 
-    @PostMapping("/player")
+    @PostMapping("/addPlayer")
     public TeamPlayer addNewPlayer(@RequestBody TeamPlayer player) {
         return this.playerService.addNewPlayer(player);
     }
       
-    @PutMapping("/player")
+    @PutMapping("/updatePlayer")
 	public TeamPlayer updatePlayer(@PathParam("id") Long id, @RequestBody TeamPlayer player) {
 		return this.playerService.updatePlayer(player, id);
 	}
 
-    @DeleteMapping("/player/{id}")
+    @DeleteMapping("/deletePlayer/{id}")
     public String deletePlayer(@PathVariable long id) {
         this.playerService.deletePlayer(id);
         return "Player deleted";

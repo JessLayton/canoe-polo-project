@@ -54,7 +54,7 @@ public class GamePlannerServiceUnitTest {
 		this.team.add(player);
 		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
 		this.testGamePlanWithID = new GamePlan(testGamePlan.getGameDate(), testGamePlan.getOpposition(), testGamePlan.getLocation(), testGamePlan.getTeam());
-		this.testGamePlanWithID.setFutureGameId(gameId);
+		this.testGamePlanWithID.setGameId(gameId);
 	}
 
 	@Test
@@ -100,7 +100,7 @@ public class GamePlannerServiceUnitTest {
 		
 		GamePlan newGamePlan = new GamePlan();
 		GamePlan updateGamePlan = new GamePlan(newGamePlan.getGameDate(), newGamePlan.getOpposition(), newGamePlan.getLocation(), newGamePlan.getTeam());
-		updateGamePlan.setFutureGameId(this.gameId);
+		updateGamePlan.setGameId(this.gameId);
 
 		when(this.repo.findById(this.gameId)).thenReturn(Optional.of(this.testGamePlanWithID));
 		

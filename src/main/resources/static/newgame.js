@@ -8,7 +8,7 @@ function newGame() {
     let opposition = document.getElementById("InputOpposition").value;
     let location = document.getElementById("InputLocation").value;
     let team = createTeam();
-    let newGameUrl = 'http://localhost:8081/gameplan';
+    let newGameUrl = 'http://localhost:8081/gamePlans/addGamePlan';
     let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": [] };
     
     axios.post(newGameUrl, data)
@@ -24,7 +24,7 @@ function newGame() {
 
 
 function populateTable() {
-    let populateTableUrl = 'http://localhost:8081/gameplan';
+    let populateTableUrl = 'http://localhost:8081/gamePlans/getAllGamePlans';
 
     axios.get(populateTableUrl)
         .then((response) => {
@@ -77,7 +77,7 @@ function createTeam() {
 }
 
 function addTeamToPlan(team, gameId) {
-    let addTeamToPlanUrl = `http://localhost:8081/gameplan/${gameId}`;
+    let addTeamToPlanUrl = 'http://localhost:8081/gamePlans/updateGamePlan/${gameId}';
     axios.put(addTeamToPlanUrl, team)
         .then((response) => {
             console.log(response);

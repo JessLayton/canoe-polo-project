@@ -54,18 +54,18 @@ public class PlannerServiceIntegrationTest {
 	
 	@Test
 	public void testAddNewGamePlan() {
-		assertEquals(this.testPlanWithID, this.service.addNewGamePlan(testGamePlan));
+		assertEquals(this.testPlanWithID.toString(), this.service.addNewGamePlan(testGamePlan).toString());
 	}
 	
 		
 	@Test
 	public void testDeleteGamePlan() {
-		assertThat(this.service.deleteGamePlan(this.testPlanWithID.getFutureGameId())).isFalse();
+		assertThat(this.service.deleteGamePlan(this.testPlanWithID.getGameId())).isFalse();
 	}
 	
 	@Test
 	public void testFindGamePlanByID() {
-		assertEquals(this.service.findGamePlanByID(this.testPlanWithID.getFutureGameId()).toString(), this.testPlanWithID.toString());
+		assertEquals(this.service.findGamePlanByID(this.testPlanWithID.getGameId()).toString(), this.testPlanWithID.toString());
 	}
 
 	@Test
@@ -77,9 +77,9 @@ public class PlannerServiceIntegrationTest {
 	public void testUpdateGamePlan() {
 		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 4, 16), "MUCC", "Salford", team);
 		GamePlan updateGamePlan = new GamePlan(newGamePlan.getGameDate(), newGamePlan.getOpposition(), newGamePlan.getLocation(), newGamePlan.getTeam());
-		updateGamePlan.setFutureGameId(this.testPlanWithID.getFutureGameId());
+		updateGamePlan.setGameId(this.testPlanWithID.getGameId());
 
-		assertThat(this.service.updateGamePlan(newGamePlan, this.testPlanWithID.getFutureGameId()).toString()).isEqualTo(updateGamePlan.toString());
+		assertThat(this.service.updateGamePlan(newGamePlan, this.testPlanWithID.getGameId()).toString()).isEqualTo(updateGamePlan.toString());
 	}
 
 

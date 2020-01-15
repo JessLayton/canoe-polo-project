@@ -3,7 +3,7 @@
 function createPlayer() {
     let fName = document.getElementById("InputFirstName").value;
     let sName = document.getElementById("InputSurname").value;
-    const url = 'http://localhost:8081/player/player';
+    const url = 'http://localhost:8081/teamPlayers/addPlayer';
     let data = { "firstName": fName, "surname": sName };
     axios.post(url, data)
         .then((response) => {
@@ -19,7 +19,7 @@ function createPlayer() {
 }
 
 function populateSelect() {
-    const url = 'http://localhost:8081/player/player';
+    const url = 'http://localhost:8081/teamPlayers/getAllPlayers';
 
     axios.get(url)
         .then((response) => {

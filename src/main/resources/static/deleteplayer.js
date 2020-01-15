@@ -1,4 +1,4 @@
-let gamePlayerArray = axios.get("http://localhost:8081/player/player")
+let gamePlayerArray = axios.get("http://localhost:8081/teamPlayers/getAllPlayers")
 	.then(response => { console.log(response.data); return response.data });
 
 
@@ -12,7 +12,7 @@ function deletePlayer() {
 			console.log(playerList.options);
 			console.log(teamPlayer.value);
 			if (teamPlayer.selected) {
-				axios.delete("http://localhost:8081/player/player/" + teamPlayer.value)
+				axios.delete("http://localhost:8081/teamPlayers/deletePlayer/" + teamPlayer.value)
 					.then(function (response) {
 						console.log(response);
 						location.reload();

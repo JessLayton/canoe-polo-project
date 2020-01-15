@@ -37,11 +37,11 @@ public class GamePlan {
 		this.team = team;
 	}
 	
-	public Long getFutureGameId() {
+	public Long getGameId() {
 		return gameId;
 	}
-	public void setFutureGameId(Long futureGameId) {
-		this.gameId = futureGameId;
+	public void setGameId(Long GameId) {
+		this.gameId = GameId;
 	}
 	public LocalDate getGameDate() {
 		return gameDate;

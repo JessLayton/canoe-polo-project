@@ -1,8 +1,8 @@
 package com.bae.rest;
 
 import static org.junit.Assert.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters=false)
 public class PlayerControllerIntegrationTest {
 	
 	@Autowired
@@ -45,23 +45,29 @@ public class PlayerControllerIntegrationTest {
 	public void init() {
 		this.playerRepo.deleteAll();
 
-		this.testTeamPlayer = new TeamPlayer("Jess", "Layton");
-		this.testPlayerWithID = this.playerRepo.save(this.testTeamPlayer);
+		this.testTeamPlayer = new TeamPlayer("John", "Smith");
+		this.testPlayerWithID = this.playerRepo.saveAndFlush(this.testTeamPlayer);
 		this.id = this.testPlayerWithID.getId();
 	}
 	
 	@Test
 	public void testAddNewPlayer() throws Exception {
 		String result = this.mock
-				.perform(request(HttpMethod.POST, "/player/addNewPlayer").contentType(MediaType.APPLICATION_JSON)
-						.content(this.mapper.writeValueAsString(testTeamPlayer)).accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+				.perform(request(HttpMethod.POST, "/teamPlayers/addPlayer")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(this.mapper.writeValueAsString(testTeamPlayer))
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
 		assertEquals(this.mapper.writeValueAsString(testPlayerWithID), result);
 	}
 	
 	@Test
 	public void testDeletePlayer() throws Exception {
-		this.mock.perform(request(HttpMethod.DELETE, "/player/deletePlayer/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.DELETE, "/teamPlayers/deletePlayer/" + this.id))
+				.andExpect(status().isOk());
 	}
 
 	@Test
@@ -69,22 +75,31 @@ public class PlayerControllerIntegrationTest {
 		List<TeamPlayer> playerList = new ArrayList<>();
 		playerList.add(this.testPlayerWithID);
 
-		String content = this.mock.perform(request(HttpMethod.GET, "/player/getAllPlayer").accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		String content = this.mock.perform(request(HttpMethod.GET, "/teamPlayers/getAllPlayers")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
 
 		assertEquals(this.mapper.writeValueAsString(playerList), content);
 	}
 
 	@Test
 	public void testUpdateTeamPlayer() throws Exception {
-		TeamPlayer newTeamPlayer = new TeamPlayer("Annie", "Latham");
+		TeamPlayer newTeamPlayer = new TeamPlayer("Joe", "Bloggs");
 		TeamPlayer updatedTeamPlayer = new TeamPlayer(newTeamPlayer.getFirstName(), newTeamPlayer.getSurname());
 		updatedTeamPlayer.setId(this.id);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/player/updatePlayer/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
-						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newTeamPlayer)))
-				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+				.perform(request(HttpMethod.PUT, "/teamPlayers/updatePlayer?id=" + this.id)
+				.accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(this.mapper.writeValueAsString(newTeamPlayer)))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
 		
 		assertEquals(this.mapper.writeValueAsString(updatedTeamPlayer), result);
 	}
