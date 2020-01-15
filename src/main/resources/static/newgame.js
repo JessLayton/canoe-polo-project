@@ -2,22 +2,26 @@
 
 
 function newGame() {
-    let gameDate = document.getElementById("InputDate").value;
-    let opponent = document.getElementById("InputOpposition").value;
+	let newGameForm = document.getElementById("newGameForm");
+    let gameInput = document.getElementById("InputDate").value;
+    let gameDate = gameInput.split("/").reverse().join("-")
+    let opposition = document.getElementById("InputOpposition").value;
     let location = document.getElementById("InputLocation").value;
     let team = createTeam();
     let newGameUrl = 'http://localhost:8081/gameplan';
-    let data = { "gameDate": gameDate, "opposition": opponent, "location": location, "team": [] };
+    let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": [] };
+    
     axios.post(newGameUrl, data)
         .then((response) => {
             console.log(response.data.futureGameId);
             addTeamToPlan(team, response.data.futureGameId);
-
+                        	
         })
         .catch(e => {
             console.log(e);
         });
-}
+    }
+
 
 function populateTable() {
     let populateTableUrl = 'http://localhost:8081/gameplan';
@@ -82,4 +86,12 @@ function addTeamToPlan(team, gameId) {
             console.log(e);
         });
 
+}
+
+
+function validateAddGameForm() {
+    let oppositionInput = document.forms["addGameForm"]["InputOpposition"].value;
+    let locationInput = document.forms["addGameForm"]["InputOpposition"].value;
+    
+    
 }

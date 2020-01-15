@@ -8,7 +8,7 @@ let gamePlanArray = axios.get("http://localhost:8081/gameplan")
 function deleteGame() {
 
 	gamePlanArray.then(data => {
-		const url = 'http://localhost:8081/gameplan/'
+		
 		for (let gamePlan of data) {
 			axios.delete("http://localhost:8081/gameplan/" + gamePlan.futureGameId)
 				.then(function (response) {
