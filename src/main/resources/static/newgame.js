@@ -9,12 +9,12 @@ function newGame() {
     let location = document.getElementById("InputLocation").value;
     let team = createTeam();
     let newGameUrl = 'http://localhost:8081/gamePlans/addGamePlan';
-    let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": [] };
+    let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": team };
     
     axios.post(newGameUrl, data)
         .then((response) => {
-            console.log(response.data.futureGameId);
-            addTeamToPlan(team, response.data.futureGameId);
+            console.log(response.data.gamePlanId);
+            addTeamToPlan(team, response.data.gamePlanId);
                         	
         })
         .catch(e => {
@@ -44,7 +44,8 @@ function populateTable() {
 function addToTable(data) {
 
     let plannerTable = document.getElementById("plannerTable");
-    for (let i = 0; i < data.length; i++) {
+    let i = 1;
+    data.forEach((game, i) => {
         let gameRow = plannerTable.insertRow(i + 1);
 
         let gameDateCell = gameRow.insertCell(0);
@@ -52,11 +53,14 @@ function addToTable(data) {
         let locationCell = gameRow.insertCell(2);
         let teamCell = gameRow.insertCell(3);
 
-        gameDateCell.innerHTML = data[i].gameDate;
-        oppositionCell.innerHTML = data[i].opposition;
-        locationCell.innerHTML = data[i].location;
-        teamCell.innerHTML = data[i].team;
-    }
+        const {  gameDate = "N/A", opposition = "N/A", location = "N/A", team } = game;
+        gameDateCell.innerHTML = gameDate;
+        oppositionCell.innerHTML = opposition;
+        locationCell.innerHTML = location;
+        if (team[0]) {
+        	teamCell.innerHTML = team[0].firstName + " " + team[0].surname;
+        }
+    });
 
 }
 
@@ -68,8 +72,8 @@ function createTeam() {
     for (let selectedPlayer of playerSelectionList.options) {
         if (selectedPlayer.selected) {
             console.log("selected player:" + selectedPlayer.text);
-            console.log("selected player ID:" + selectedPlayer.value)//?
-            selectedPlayerIds.push(selectedPlayer.value); //?? 
+            console.log("selected player ID:" + selectedPlayer.value)// ?
+            selectedPlayerIds.push(selectedPlayer.value); // ??
         }
     }
     console.log("selected player ids: " + selectedPlayerIds);
@@ -77,7 +81,7 @@ function createTeam() {
 }
 
 function addTeamToPlan(team, gameId) {
-    let addTeamToPlanUrl = 'http://localhost:8081/gamePlans/updateGamePlan/${gameId}';
+    let addTeamToPlanUrl = `http://localhost:8081/gamePlans/updateGamePlan/${gameId}`;
     axios.put(addTeamToPlanUrl, team)
         .then((response) => {
             console.log(response);
