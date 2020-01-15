@@ -9,10 +9,8 @@ function deletePlayer() {
 	gamePlayerArray.then(data => {
 		
 		for (let teamPlayer of playerSelectionList.options) {
-			console.log(playerList.options);
-			console.log(teamPlayer.value);
 			if (teamPlayer.selected) {
-				axios.delete("http://localhost:8081/teamPlayers/deletePlayer/" + teamPlayer.value)
+				axios.delete('http://localhost:8081/teamPlayers/deletePlayer/" + teamPlayer.value')
 					.then(function (response) {
 						console.log(response);
 						location.reload();

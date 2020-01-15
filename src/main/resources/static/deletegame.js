@@ -10,7 +10,7 @@ function deleteGame() {
 	gamePlanArray.then(data => {
 		
 		for (let gamePlan of data) {
-			axios.delete("http://localhost:8081/gamePlans/deleteGamePlan/" + gamePlan.futureGameId)
+			axios.delete("http://localhost:8081/gamePlans/deleteGamePlan/" + gamePlan.gamePlanId)
 				.then(function (response) {
 					console.log(response);
 					location.reload();

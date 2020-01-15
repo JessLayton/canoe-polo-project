@@ -32,7 +32,7 @@ public class GamePlannerController {
 		return plannerService.getAllGamePlan();
 	}
 
-	@GetMapping("/getGamePlan/{id}")
+	@GetMapping("/getGamePlan/{gameId}")
 	public GamePlan getGamePlan(@PathVariable Long gameId) {
 		return this.plannerService.findGamePlanByID(gameId);
 	}

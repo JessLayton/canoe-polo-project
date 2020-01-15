@@ -22,7 +22,7 @@
 
 	<div id="container">
 
-		<form id="newGameForm" action="#">
+		<form id="newGameForm" onsubmit="newGame();return false">
 			<div class="form-group">
 				<h2>ADD GAME</h2>
 				<br>
@@ -51,8 +51,7 @@
 			<br>
 
 			<div style="width: 10%; float: right;">
-				<input class="button" type="submit" value="Submit"
-					onclick="newGame()">
+				<input class="button" type="submit" value="Submit">
 			</div>
 
 		</form>
