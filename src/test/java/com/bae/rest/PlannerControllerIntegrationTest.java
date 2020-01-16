@@ -57,10 +57,9 @@ public class PlannerControllerIntegrationTest {
 		this.plannerRepo.deleteAll();
 //		this.playerRepo.deleteAll();
 		this.team = new ArrayList<>();
-//		this.player = new TeamPlayer("Luke", "Cottenham");
+//		this.player = new TeamPlayer("Joe", "Bloggs");
 //		this.playerWithId = this.playerRepo.save(player);
 		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
-		this.testGamePlan2 = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
 		this.testGamePlanWithID = this.plannerRepo.save(this.testGamePlan);
 		this.gameId = this.testGamePlanWithID.getGamePlanId();
 	}
@@ -70,7 +69,7 @@ public class PlannerControllerIntegrationTest {
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/gamePlans/addGamePlan")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(this.mapper.writeValueAsString(testGamePlan2))
+				.content(this.mapper.writeValueAsString(testGamePlan))
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andReturn()
@@ -84,8 +83,24 @@ public class PlannerControllerIntegrationTest {
 		this.mock.perform(request(HttpMethod.DELETE, "/gamePlans/deleteGamePlan/" + this.gameId))
 				.andExpect(status().isOk());
 	}
-		
-		
 	
+	@Test
+	public void testUpdateGamePlan() throws Exception {
+		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 5, 12), "Wildcats", "Leeds", team);
+		GamePlan updatedGamePlan = new GamePlan(newGamePlan.getGameDate(), newGamePlan.getOpposition(), newGamePlan.getLocation(), newGamePlan.getTeam());
+		updatedGamePlan.setGameId(this.gameId);
 
+		String result = this.mock
+				.perform(request(HttpMethod.PUT, "/gamePlans/updateGamePlan?id=" + this.gameId)
+				.accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(this.mapper.writeValueAsString(newGamePlan)))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+		
+		assertEquals(this.mapper.writeValueAsString(updatedGamePlan), result);
+	}
 }
+		
