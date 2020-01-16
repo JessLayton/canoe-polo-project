@@ -11,11 +11,9 @@ function newGame() {
     let newGameUrl = 'http://localhost:8081/gamePlans/addGamePlan';
     let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": team };
     
-    axios.post(newGameUrl, data)
+    axios.post(newGameUrl, data, {"Content-Type": "application/json"})
         .then((response) => {
-            console.log(response.data.gamePlanId);
-            addTeamToPlan(team, response.data.gamePlanId);
-                        	
+            console.log(response.data.gamePlanId);                        	
         })
         .catch(e => {
             console.log(e);
@@ -53,13 +51,21 @@ function addToTable(data) {
         let locationCell = gameRow.insertCell(2);
         let teamCell = gameRow.insertCell(3);
 
-        const {  gameDate = "N/A", opposition = "N/A", location = "N/A", team } = game;
+        const {  gameDate = "N/A", opposition = "N/A", location = "N/A", team = ["N/A"] } = game;
         gameDateCell.innerHTML = gameDate;
         oppositionCell.innerHTML = opposition;
         locationCell.innerHTML = location;
-        if (team[0]) {
-        	teamCell.innerHTML = team[0].firstName + " " + team[0].surname;
+        console.log(team);
+        let resultTeam = "";
+        for (let i=0; i<team.length; i++) {
+	        if (team[i]) {
+	        	if(i!=0){
+	        		resultTeam += ", ";
+	        	}
+	        	resultTeam += team[i].firstName + " " + team[i].surname;
+	        }
         }
+        teamCell.innerHTML = resultTeam;
     });
 
 }
@@ -71,26 +77,15 @@ function createTeam() {
 
     for (let selectedPlayer of playerSelectionList.options) {
         if (selectedPlayer.selected) {
-            console.log("selected player:" + selectedPlayer.text);
-            console.log("selected player ID:" + selectedPlayer.value)// ?
-            selectedPlayerIds.push(selectedPlayer.value); // ??
+            console.log("selected player ID:" + selectedPlayer.value);
+            selectedPlayerIds.push({"id": selectedPlayer.value}); 
         }
     }
     console.log("selected player ids: " + selectedPlayerIds);
     return selectedPlayerIds;
 }
 
-function addTeamToPlan(team, gameId) {
-    let addTeamToPlanUrl = `http://localhost:8081/gamePlans/updateGamePlan/${gameId}`;
-    axios.put(addTeamToPlanUrl, team)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch(e => {
-            console.log(e);
-        });
-
-}
+/*
 
 
 function validateAddGameForm() {
@@ -99,3 +94,4 @@ function validateAddGameForm() {
     
     
 }
+*/

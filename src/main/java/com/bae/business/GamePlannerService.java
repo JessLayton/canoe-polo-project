@@ -1,6 +1,7 @@
 package com.bae.business;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,6 @@ public class GamePlannerService {
 	}
 	
 	public List<GamePlan> getAllGamePlan() {
-		if (plannerRepo.findAll().isEmpty()) {
-			addNewGamePlan(new GamePlan());
-		}
 		return plannerRepo.findAll();
 	}
 	
