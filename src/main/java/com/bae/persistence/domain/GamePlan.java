@@ -1,6 +1,6 @@
 package com.bae.persistence.domain;
 
- import java.time.LocalDate;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class GamePlan {
 	private String opposition;
 	private String location;
 	
-	@ManyToMany(targetEntity = TeamPlayer.class, fetch=FetchType.EAGER) 
+	@ManyToMany(fetch=FetchType.EAGER) 
 	@JoinTable(name="Game_Players")
 	private List<TeamPlayer> team;
 	
@@ -37,11 +37,11 @@ public class GamePlan {
 		this.team = team;
 	}
 	
-	public Long getFutureGameId() {
+	public Long getGamePlanId() {
 		return gameId;
 	}
-	public void setFutureGameId(Long futureGameId) {
-		this.gameId = futureGameId;
+	public void setGameId(Long gamePlanId) {
+		this.gameId = gamePlanId;
 	}
 	public LocalDate getGameDate() {
 		return gameDate;

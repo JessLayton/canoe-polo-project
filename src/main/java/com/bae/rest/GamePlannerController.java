@@ -10,41 +10,53 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.business.GamePlannerService;
 import com.bae.persistence.domain.GamePlan;
 
-
 @RestController
+@RequestMapping("/gamePlans")
 public class GamePlannerController {
+
 	private GamePlannerService plannerService;
-    
-    
-    @GetMapping("/gameplan")
-    public List<GamePlan> getAllGamePlan() {
-        return plannerService.getAllGamePlan();
-    }
-    
-    @GetMapping("/get/{id}")
+
+	public GamePlannerController(GamePlannerService plannerService) {
+		super();
+		this.plannerService = plannerService;
+	}
+
+	@GetMapping("/getAllGamePlans")
+	public List<GamePlan> getAllGamePlan() {
+		return plannerService.getAllGamePlan();
+	}
+
+	@GetMapping("/getGamePlan/{gameId}")
 	public GamePlan getGamePlan(@PathVariable Long gameId) {
 		return this.plannerService.findGamePlanByID(gameId);
 	}
-    
-    @PostMapping("/gameplan")
-    public GamePlan addNewGamePlan(@RequestBody GamePlan gameplan) {
-        return plannerService.addNewGamePlan(gameplan);
-    }
-    
-    @PutMapping("/gameplan")
-    public GamePlan updateGamePlan(@PathParam("id") Long gameId, @RequestBody GamePlan gameplan) {
-    	return this.plannerService.updateGamePlan(gameplan, gameId);
-    }
-    
-    @DeleteMapping("/gameplan/{gameId}")
-    public String deleteGamePlan(@RequestBody long gameId) {
-    	plannerService.deleteGamePlan(gameId);
-    	return("Game deleted");
-    }
-    
+
+	@PostMapping("/addGamePlan")
+	public GamePlan addNewGamePlan(@RequestBody GamePlan gameplan) {
+		return plannerService.addNewGamePlan(gameplan);
+	}
+
+	@PutMapping("/updateGamePlans")
+	public GamePlan updateGamePlan(@PathParam("id") Long gameId, @RequestBody GamePlan gameplan) {
+		return this.plannerService.updateGamePlan(gameplan, gameId);
+	}
+
+	@PutMapping("/updateGamePlan/{gameId}")
+	public GamePlan updateGamePlanTeam(@PathVariable Long gameId, @RequestBody List<Long> players) {
+		return this.plannerService.updateGamePlanTeam(gameId, players);
+
+	}
+
+	@DeleteMapping("/deleteGamePlan/{gameId}")
+	public String deleteGamePlan(@PathVariable long gameId) {
+		plannerService.deleteGamePlan(gameId);
+		return ("Game deleted");
+	}
+
 }
