@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -41,7 +42,9 @@ public class PlannerControllerUnitTest {
 	
 	@Before
 	public void init() {
+		this.gamePlanList = new ArrayList<>();
 		this.testGamePlan = new GamePlan(LocalDate.of(2020, 5, 12), "Wildcats", "Leeds", team);
+		this.gamePlanList.add(testGamePlan);
 		this.testGamePlanWithID = new GamePlan(testGamePlan.getGameDate(), testGamePlan.getOpposition(), testGamePlan.getLocation(), testGamePlan.getTeam());
 		this.testGamePlanWithID.setGameId(gameId);
 	}

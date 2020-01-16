@@ -37,15 +37,15 @@ public class PlannerServiceIntegrationTest {
 	private List<GamePlan> gameList;
 	
 	
-	private List<TeamPlayer> team;
+	private List<TeamPlayer> playerList;
 	
 
 	@Before
 	public void init() {
-		this.team = new ArrayList<>();
+		this.playerList = new ArrayList<>();
 		this.gameList = new ArrayList<>();
 		this.gameList.add(testGamePlan);
-		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
+		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", playerList);
 		
 		this.repo.deleteAll();
 	
@@ -75,7 +75,7 @@ public class PlannerServiceIntegrationTest {
 
 	@Test
 	public void testUpdateGamePlan() {
-		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 4, 16), "MUCC", "Salford", team);
+		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 4, 16), "MUCC", "Salford", playerList);
 		GamePlan updateGamePlan = new GamePlan(newGamePlan.getGameDate(), newGamePlan.getOpposition(), newGamePlan.getLocation(), newGamePlan.getTeam());
 		updateGamePlan.setGameId(this.testPlanWithID.getGamePlanId());
 

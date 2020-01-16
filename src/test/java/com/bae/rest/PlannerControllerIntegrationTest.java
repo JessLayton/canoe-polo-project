@@ -24,6 +24,8 @@ import com.bae.persistence.domain.TeamPlayer;
 import com.bae.persistence.repo.GamePlannerRepository;
 import com.bae.persistence.repo.TeamPlayerRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -42,30 +44,66 @@ public class PlannerControllerIntegrationTest {
 	
 	private long gameId;
 	
-	private TeamPlayer player;
+	
 	private TeamPlayer playerWithId;
 	
-	private List<TeamPlayer> team;
+	private List<TeamPlayer> playerList;
+	
+	private TeamPlayer testPlayer;
 	
 	private GamePlan testGamePlan;
-	private GamePlan testGamePlan2;
-	
+		
 	private GamePlan testGamePlanWithID;
 	
 	@Before
 	public void init() {
+		this.mapper.registerModule(new JavaTimeModule());
+		this.mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 		this.plannerRepo.deleteAll();
-//		this.playerRepo.deleteAll();
-		this.team = new ArrayList<>();
-//		this.player = new TeamPlayer("Joe", "Bloggs");
-//		this.playerWithId = this.playerRepo.save(player);
-		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
+		this.playerRepo.deleteAll();
+		this.playerList = new ArrayList<>();
+		this.testPlayer = new TeamPlayer("Joe", "Bloggs");
+		this.playerList.add(testPlayer);
+		this.playerWithId = this.playerRepo.save(testPlayer);
+		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", playerList);
 		this.testGamePlanWithID = this.plannerRepo.save(this.testGamePlan);
 		this.gameId = this.testGamePlanWithID.getGamePlanId();
 	}
 	
 	@Test
+	public void testGetAllGamePlans() throws Exception {
+		List<GamePlan> plannerList = new ArrayList<>();
+		plannerList.add(this.testGamePlanWithID);
+
+		String content = this.mock.perform(request(HttpMethod.GET, "/gamePlans/getAllGamePlans")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+
+		assertEquals(this.mapper.writeValueAsString(plannerList), content);
+	}
+	
+	@Test
+	public void testGamePlan() throws Exception {
+		List<GamePlan> plannerList = new ArrayList<>();
+		plannerList.add(this.testGamePlanWithID);
+
+		String content = this.mock.perform(request(HttpMethod.GET, "/gamePlans/getGamePlan/" + this.gameId)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+
+		assertEquals(this.mapper.writeValueAsString(testGamePlan), content);
+	}
+	
+	@Test
 	public void testAddNewGamePlan() throws Exception {
+		GamePlan testGamePlan2WithId = new GamePlan(this.testGamePlan.getGameDate(), this.testGamePlan.getOpposition(), this.testGamePlan.getLocation(), this.testGamePlan.getTeam()); 
+		testGamePlan2WithId.setGameId(this.gameId + 1);
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/gamePlans/addGamePlan")
 				.contentType(MediaType.APPLICATION_JSON)
@@ -75,23 +113,17 @@ public class PlannerControllerIntegrationTest {
 				.andReturn()
 				.getResponse()
 				.getContentAsString();
-		assertEquals(this.mapper.writeValueAsString(testGamePlanWithID), result);
+		assertEquals(this.mapper.writeValueAsString(testGamePlan2WithId), result);
 	}
 	
 	@Test
-	public void testDeleteGamePlan() throws Exception {
-		this.mock.perform(request(HttpMethod.DELETE, "/gamePlans/deleteGamePlan/" + this.gameId))
-				.andExpect(status().isOk());
-	}
-	
-	@Test
-	public void testUpdateGamePlan() throws Exception {
-		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 5, 12), "Wildcats", "Leeds", team);
+	public void testUpdateGamePlans() throws Exception {
+		GamePlan newGamePlan = new GamePlan(LocalDate.of(2020, 5, 12), "Wildcats", "Leeds", playerList);
 		GamePlan updatedGamePlan = new GamePlan(newGamePlan.getGameDate(), newGamePlan.getOpposition(), newGamePlan.getLocation(), newGamePlan.getTeam());
 		updatedGamePlan.setGameId(this.gameId);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/gamePlans/updateGamePlan?id=" + this.gameId)
+				.perform(request(HttpMethod.PUT, "/gamePlans/updateGamePlans?gameId=" + this.gameId)
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(this.mapper.writeValueAsString(newGamePlan)))
@@ -102,5 +134,14 @@ public class PlannerControllerIntegrationTest {
 		
 		assertEquals(this.mapper.writeValueAsString(updatedGamePlan), result);
 	}
+	
+	
+	
+	@Test
+	public void testDeleteGamePlan() throws Exception {
+		this.mock.perform(request(HttpMethod.DELETE, "/gamePlans/deleteGamePlan/" + this.gameId))
+				.andExpect(status().isOk());
+	}
+
 }
 		
