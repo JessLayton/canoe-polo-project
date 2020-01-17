@@ -1,4 +1,4 @@
-let gamePlayerArray = axios.get("http://localhost:8081/teamPlayers/getAllPlayers")
+let gamePlayerArray = axios.get("/mucc-canoe-polo/teamPlayers/getAllPlayers")
 	.then(response => { console.log(response.data); return response.data });
 
 
@@ -10,13 +10,14 @@ function deletePlayer() {
 		
 		for (let teamPlayer of playerSelectionList.options) {
 			if (teamPlayer.selected) {
-				axios.delete("http://localhost:8081/teamPlayers/deletePlayer/" + teamPlayer.value)
+				axios.delete("/mucc-canoe-polo/teamPlayers/deletePlayer/" + teamPlayer.value)
 					.then(function (response) {
 						console.log(response);
 						location.reload();
 					})
 					.catch(function (error) {
 						console.log(error);
+						alert("Cannot delete player used in gameplan")
 					});
 			}
 		}

@@ -10,12 +10,9 @@
 </head>
 
 <body>
-  <div id="nav">
-    <nav class="navbar navbar-dark bg-dark">
-
-      <button class="home-button" onclick="location.href='index.html'"> Home </button>
-    </nav>
-  </div>
+  <div class="topnav">
+		<a class="active" href="index.html">Home</a> 
+	</div>
 
 
   <div id="container">
@@ -29,12 +26,12 @@
       <br>
 
 
-        <input type="text" class="form-control" id="InputFirstName" required/>
+        <input type="text" class="form-control" id="InputFirstName" maxlength="15"/>
         <br>
       </div>
       <div class="form-group">
         <h4> Surname: </h4>
-        <input type="text" class="form-control" id="InputSurname" required/>
+        <input type="text" class="form-control" id="InputSurname" maxlength="15"/>
       </div>
 
       <ul id="selectedPlayers"></ul>

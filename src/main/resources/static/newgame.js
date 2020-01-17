@@ -8,9 +8,9 @@ function newGame() {
     let opposition = document.getElementById("InputOpposition").value;
     let location = document.getElementById("InputLocation").value;
     let team = createTeam();
-    let newGameUrl = 'http://localhost:8081/gamePlans/addGamePlan';
+    let newGameUrl = '/mucc-canoe-polo/gamePlans/addGamePlan';
     let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": team };
-    
+    if (team.length == 5) {
     axios.post(newGameUrl, data, {"Content-Type": "application/json"})
         .then((response) => {
             console.log(response.data.gamePlanId);                        	
@@ -19,10 +19,17 @@ function newGame() {
             console.log(e);
         });
     }
+    else if (team.length > 5) {
+    	alert("Too many players added!")
+    }
+    else {
+    	alert("Too few players added!")
+    }
+}
 
 
 function populateTable() {
-    let populateTableUrl = 'http://localhost:8081/gamePlans/getAllGamePlans';
+    let populateTableUrl = '/mucc-canoe-polo/gamePlans/getAllGamePlans';
 
     axios.get(populateTableUrl)
         .then((response) => {
@@ -85,13 +92,4 @@ function createTeam() {
     return selectedPlayerIds;
 }
 
-/*
 
-
-function validateAddGameForm() {
-    let oppositionInput = document.forms["addGameForm"]["InputOpposition"].value;
-    let locationInput = document.forms["addGameForm"]["InputOpposition"].value;
-    
-    
-}
-*/

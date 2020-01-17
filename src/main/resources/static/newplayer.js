@@ -3,25 +3,25 @@
 function createPlayer() {
     let fName = document.getElementById("InputFirstName").value;
     let sName = document.getElementById("InputSurname").value;
-    const url = 'http://localhost:8081/teamPlayers/addPlayer';
+    const newPlayerUrl = '/mucc-canoe-polo/teamPlayers/addPlayer';
     let data = { "firstName": fName, "surname": sName };
-    axios.post(url, data)
+    axios.post(newPlayerUrl, data)
         .then((response) => {
             window.alert("Player Added");
             console.log(response);
         })
 
-        .catch(e => {
+        .catch(error => {
             window.alert("Player Not Added");
-            console.log(e);
+            console.log(error);
         });
 
 }
 
 function populateSelect() {
-    const url = 'http://localhost:8081/teamPlayers/getAllPlayers';
+    const getNewPlayersUrl = '/mucc-canoe-polo/teamPlayers/getAllPlayers';
 
-    axios.get(url)
+    axios.get(getNewPlayersUrl)
         .then((response) => {
             addToScreen(response.data);
             console.log(response);

@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 <head>
 <meta charset="utf-8" />
@@ -11,14 +11,10 @@
 
 <body onload="populateSelect()">
 	<div id="nav">
-		<nav class="navbar navbar-dark bg-dark">
-			<nav class="navbar navbar-dark bg-dark">
-				<button class="home-button"
-					onclick="window.location.href='index.html'">Home</button>
-			</nav>
-		</nav>
+		<div class="topnav">
+			<a class="active" href="index.html">Home</a> 
+		</div>
 	</div>
-
 
 	<div id="container">
 
@@ -32,12 +28,12 @@
 			</div>
 			<div class="form-group">
 				<h4>Opposition:</h4>
-				<input type="text" class="form-control" id="InputOpposition">
+				<input type="text" class="form-control" id="InputOpposition" maxlength="30">
 			</div>
 			<br>
 			<div class="form-group">
 				<h4>Location:</h4>
-				<input type="text" class="form-control" id="InputLocation">
+				<input type="text" class="form-control" id="InputLocation" maxlength="30">
 			</div>
 			<br>
 			<div class="form-group">
@@ -46,7 +42,6 @@
 					<option value="0" disabled>Choose 5 players for team</option>
 				</select>
 			</div>
-			<div class="invalid-feedback">Invalid input</div>
 
 			<br>
 
@@ -58,20 +53,23 @@
 		<br>
 
 		<div style="width: 10%; float: left;">
-
 			<button class="button"
 				onclick="window.location.href='newplayer.html'">Add player
 			</button>
 		</div>
 
-		
-		<div style="width: 10%; float: left;">
-			<button class="button" onclick="deletePlayer()"> 
-			Delete Player </button>
+		<div style="width: 15%; float: left;">
+			<button class="button"
+				onclick="window.location.href='updateplayer.html'">Update
+				player</button>
 		</div>
 
-		<br>
-		<br>
+		<div style="width: 18%; float: left;">
+			<button class="button" onclick="deletePlayer()">Delete
+				Players</button>
+		</div>
+
+		<br> <br>
 
 		<div>
 

@@ -57,15 +57,13 @@ public class TeamPlayer {
 		return "TeamPlayer [id=" + id + ", firstName=" + firstName + ", surname=" + surname + "]";
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((games == null) ? 0 : games.hashCode());
-		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
-		return result;
-	}
+	/*
+	 * @Override public int hashCode() { final int prime = 31; int result = 1;
+	 * result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+	 * result = prime * result + ((games == null) ? 0 : games.hashCode()); result =
+	 * prime * result + ((surname == null) ? 0 : surname.hashCode()); return result;
+	 * }
+	 */
 
 	@Override
 	public boolean equals(Object obj) {
