@@ -1,4 +1,4 @@
-let gamePlayerArray = axios.get("/mucc-canoe-polo/teamPlayers/getAllPlayers")
+let gamePlayerArray = axios.get("/canoe-polo-app/teamPlayers/getAllPlayers")
 	.then(response => { console.log(response.data); return response.data });
 
 
@@ -10,7 +10,7 @@ function deletePlayer() {
 		
 		for (let teamPlayer of playerSelectionList.options) {
 			if (teamPlayer.selected) {
-				axios.delete("/mucc-canoe-polo/teamPlayers/deletePlayer/" + teamPlayer.value)
+				axios.delete("/canoe-polo-app/teamPlayers/deletePlayer/" + teamPlayer.value)
 					.then(function (response) {
 						console.log(response);
 						location.reload();

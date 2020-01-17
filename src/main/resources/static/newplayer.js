@@ -3,7 +3,7 @@
 function createPlayer() {
     let fName = document.getElementById("InputFirstName").value;
     let sName = document.getElementById("InputSurname").value;
-    const newPlayerUrl = '/mucc-canoe-polo/teamPlayers/addPlayer';
+    const newPlayerUrl = '/canoe-polo-app/teamPlayers/addPlayer';
     let data = { "firstName": fName, "surname": sName };
     axios.post(newPlayerUrl, data)
         .then((response) => {
@@ -19,7 +19,7 @@ function createPlayer() {
 }
 
 function populateSelect() {
-    const getNewPlayersUrl = '/mucc-canoe-polo/teamPlayers/getAllPlayers';
+    const getNewPlayersUrl = '/canoe-polo-app/teamPlayers/getAllPlayers';
 
     axios.get(getNewPlayersUrl)
         .then((response) => {
