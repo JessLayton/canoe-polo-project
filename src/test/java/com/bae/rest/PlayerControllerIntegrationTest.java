@@ -108,7 +108,7 @@ public class PlayerControllerIntegrationTest {
 		updatedTeamPlayer.setId(this.id);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/teamPlayers/updatePlayer?id=" + this.id)
+				.perform(request(HttpMethod.PUT, "/teamPlayers/updatePlayer/" + this.id)
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(this.mapper.writeValueAsString(newTeamPlayer)))

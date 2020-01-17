@@ -1,10 +1,10 @@
 "use strict"
 
 function createPlayer() {
-    let fName = document.getElementById("InputFirstName").value;
-    let sName = document.getElementById("InputSurname").value;
-    const newPlayerUrl = '/canoe-polo-app/teamPlayers/addPlayer';
-    let data = { "firstName": fName, "surname": sName };
+    let firstName = document.getElementById("InputFirstName").value;
+    let surname = document.getElementById("InputSurname").value;
+    const newPlayerUrl = 'http://localhost:8081/teamPlayers/addPlayer';
+    let data = { "firstName": firstName, "surname": surname };
     axios.post(newPlayerUrl, data)
         .then((response) => {
             window.alert("Player Added");
@@ -18,12 +18,13 @@ function createPlayer() {
 
 }
 
-function populateSelect() {
-    const getNewPlayersUrl = '/canoe-polo-app/teamPlayers/getAllPlayers';
+function populateSelect(elementToPopulate) {
+    const getNewPlayersUrl = 'http://localhost:8081/teamPlayers/getAllPlayers';
+    
 
     axios.get(getNewPlayersUrl)
         .then((response) => {
-            addToScreen(response.data);
+            addToScreen(response.data, elementToPopulate);
             console.log(response);
         })
         //redirect back
@@ -34,12 +35,14 @@ function populateSelect() {
 
 }
 
-function addToScreen(item, index) {
+function addToScreen(item, elementToPopulate) {
     for (let x of item) {
+    	
         let option = document.createElement("option");
-        let select = document.getElementById("playerList");
+        let select = document.getElementById(elementToPopulate);
         option.innerText = (x.firstName + " " + x.surname);
         option.value = x.id;
+        option.id = x.id;
         console.log(x.id);
         select.appendChild(option);
     }

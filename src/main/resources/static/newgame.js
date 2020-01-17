@@ -8,7 +8,7 @@ function newGame() {
     let opposition = document.getElementById("InputOpposition").value;
     let location = document.getElementById("InputLocation").value;
     let team = createTeam();
-    let newGameUrl = '/canoe-polo-app/gamePlans/addGamePlan';
+    let newGameUrl = 'http://localhost:8081/gamePlans/addGamePlan';
     let data = { "gameDate": gameDate, "opposition": opposition, "location": location, "team": team };
     if (team.length == 5) {
     axios.post(newGameUrl, data, {"Content-Type": "application/json"})
@@ -29,7 +29,7 @@ function newGame() {
 
 
 function populateTable() {
-    let populateTableUrl = '/canoe-polo-app/gamePlans/getAllGamePlans';
+    let populateTableUrl = 'http://localhost:8081/gamePlans/getAllGamePlans';
 
     axios.get(populateTableUrl)
         .then((response) => {

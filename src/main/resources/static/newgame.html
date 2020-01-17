@@ -9,7 +9,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body onload="populateSelect()">
+<body onload="populateSelect('playerList')">
 	<div id="nav">
 		<div class="topnav">
 			<a class="active" href="index.html">Home</a> 
@@ -39,7 +39,7 @@
 			<div class="form-group">
 				<h4>Add Team Players:</h4>
 				<select id="playerList" class="custom-select" multiple>
-					<option value="0" disabled>Choose 5 players for team</option>
+					<option id="0" value="0" disabled>Choose 5 players for team</option>
 				</select>
 			</div>
 
