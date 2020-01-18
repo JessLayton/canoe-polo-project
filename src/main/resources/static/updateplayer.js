@@ -2,11 +2,6 @@
 
 let playerToUpdate = document.getElementById("updatePlayerList");
 
-
-
-//const playerOptions = axios.get("http://localhost:8081/teamPlayers/getAllPlayers")
-//    .then(response => { console.log(response.data); return response.data });
-
 function updatePlayer() {
 	
 	let updatedFirstName = document.getElementById("InputUpdatedFirstName").value;
@@ -19,7 +14,7 @@ function updatePlayer() {
 
     			if (teamPlayer.selected) {
 			
-			axios.put("http://localhost:8081/teamPlayers/updatePlayer/" + teamPlayer.value, data)
+			axios.put("/canoe-polo-app/teamPlayers/updatePlayer/" + teamPlayer.value, data)
 				.then(function (response) {
 					console.log(response);
 				});
