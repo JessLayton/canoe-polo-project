@@ -18,20 +18,20 @@ so all the players can be added to more than one game. There is CRUD functionali
 view, delete and update the players and to create, view and delete games.
 
 <a name="features"></a>
-## Features ##
+## Features - CRUD ##
 
 * Create: 
-Can create new players and new game plans
+Can create new players and new game plans.
 
 * Read: 
   * Players are displayed in a select box where they can be selected to add to gameplans.
   * Games are displayed in the game plan table where new rows are dynamically created when a game is added.
 
 * Update: 
-Players can be updated
+Players can be updated.
 
 * Delete: 
-Players and games can be deleted
+Players and games can be deleted.
 
 <a name="status"></a>
 ### Status ###
@@ -45,10 +45,9 @@ Version Number: 0.0.1-SNAPSHOT
 <a name="deployment"></a>
 ### Deployment ###
 
-Jenkins was used to automate the build, test and deployment processes, with a webhook to GitHub which was triggered 
-with every push event.
+Jenkins was used to automate the build, test and deployment processes.
 
-To access the app, navigate to the address:
+To access the app, navigate to:
 
 http://3.11.57.184:8181/canoe-polo-app
 
@@ -67,7 +66,7 @@ http://3.11.57.184:8181/canoe-polo-app
 --- | --- | 
 Latest ✔ | Latest ✔ |
 
-## Author ##
+#### Author ####
 
 Jess Layton
 
