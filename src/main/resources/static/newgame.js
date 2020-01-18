@@ -30,7 +30,7 @@ function newGame() {
 
 function populateTable() {
     
-    axios.get(/canoe-polo-app/gamePlans/getAllGamePlans')
+    axios.get('/canoe-polo-app/gamePlans/getAllGamePlans')
         .then((response) => {
             addToTable(response.data);
             console.log("get: " + response.data);
