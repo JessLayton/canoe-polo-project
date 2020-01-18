@@ -34,7 +34,7 @@ Players can be updated.
 Players and games can be deleted.
 
 <a name="status"></a>
-### Status ###
+## Status ##
 
 Unit testing: JUnit and Mockito tests - 80.1 % coverage (See [SureFire Report Summary](https://github.com/JessLayton/canoe-polo-project/blob/refactor/docs/Surefire%20report.pdf))
 
@@ -43,7 +43,7 @@ SonarQube: static reporting and refactoring - Build = pass
 Version Number: 0.0.1-SNAPSHOT
 
 <a name="deployment"></a>
-### Deployment ###
+## Deployment ##
 
 Jenkins was used to automate the build, test and deployment processes.
 
