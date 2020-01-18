@@ -13,9 +13,9 @@
 
 The aim was to create an OOP-based application, with two related tables and CRUD functionality. 
 I have made an application which can be used to plan future games for my canoe polo team by recording the date,
-location, opposition and players in the team. There is a many to many relationship between players and games
-so all the players can be added to more than one game. There is CRUD functionality as it is possible to create,
-view, delete and update the players and to create, view and delete games.
+location, opposition and players in the team. There is a many to many relationship between players and games with 
+a connecting joiner table so all the players can be added to more than one game. There is CRUD functionality as 
+it is possible to create, view, delete and update the players and to create, view and delete games.
 
 <a name="features"></a>
 ## Features - CRUD ##
@@ -66,7 +66,7 @@ http://3.11.57.184:8181/canoe-polo-app
 --- | --- | 
 Latest ✔ | Latest ✔ |
 
-#### Author ####
+## Author ##
 
 Jess Layton
 
