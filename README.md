@@ -24,9 +24,8 @@ view, delete and update the players and to create, view and delete games.
 Can create new players and new game plans
 
 * Read: 
-Players are displayed in a select box where they can be selected to add to gameplans.
-      
-Games are displayed in the game plan table where new rows are dynamically created when a game is added.
+ * Players are displayed in a select box where they can be selected to add to gameplans.
+ * Games are displayed in the game plan table where new rows are dynamically created when a game is added.
 
 * Update: 
 Players can be updated
@@ -37,7 +36,8 @@ Players and games can be deleted
 <a name="testing"></a>
 ### Testing ###
 
-Unit testing: JUnit and Mockito tests - 80.1 % coverage (See [SureFire Report Summary]())
+Unit testing: JUnit and Mockito tests - 80.1 % coverage (See [SureFire Report Summary](https://github.com/JessLayton/canoe-polo-project/blob/refactor/docs/Surefire%20report.pdf))
+
 SonarQube: static reporting and refactoring - Build = pass
 
 <a name="deployment"></a>
