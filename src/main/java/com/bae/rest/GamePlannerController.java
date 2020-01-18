@@ -47,12 +47,7 @@ public class GamePlannerController {
 		return this.plannerService.updateGamePlan(gameplan, gameId);
 	}
 
-	@PutMapping("/updateGamePlan/{gameId}")
-	public GamePlan updateGamePlanTeam(@PathVariable Long gameId, @RequestBody List<Long> players) {
-		return this.plannerService.updateGamePlanTeam(gameId, players);
-
-	}
-
+	
 	@DeleteMapping("/deleteGamePlan/{gameId}")
 	public String deleteGamePlan(@PathVariable long gameId) {
 		plannerService.deleteGamePlan(gameId);

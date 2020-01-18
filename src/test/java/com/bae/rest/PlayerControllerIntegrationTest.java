@@ -51,6 +51,36 @@ public class PlayerControllerIntegrationTest {
 	}
 	
 	@Test
+	public void testGetAllPlayers() throws Exception {
+		List<TeamPlayer> playerList = new ArrayList<>();
+		playerList.add(this.testPlayerWithID);
+
+		String content = this.mock.perform(request(HttpMethod.GET, "/teamPlayers/getAllPlayers")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+
+		assertEquals(this.mapper.writeValueAsString(playerList), content);
+	}
+	
+	@Test
+	public void testGetPlayerById() throws Exception {
+		List<TeamPlayer> playerList = new ArrayList<>();
+		playerList.add(this.testPlayerWithID);
+
+		String content = this.mock.perform(request(HttpMethod.GET, "/teamPlayers/getPlayer/" + this.id)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+
+		assertEquals(this.mapper.writeValueAsString(testTeamPlayer), content);
+	}
+	
+	@Test
 	public void testAddNewPlayer() throws Exception {
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/teamPlayers/addPlayer")
@@ -70,21 +100,7 @@ public class PlayerControllerIntegrationTest {
 				.andExpect(status().isOk());
 	}
 
-	@Test
-	public void testGetAllPlayers() throws Exception {
-		List<TeamPlayer> playerList = new ArrayList<>();
-		playerList.add(this.testPlayerWithID);
-
-		String content = this.mock.perform(request(HttpMethod.GET, "/teamPlayers/getAllPlayers")
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andReturn()
-				.getResponse()
-				.getContentAsString();
-
-		assertEquals(this.mapper.writeValueAsString(playerList), content);
-	}
-
+	
 	@Test
 	public void testUpdateTeamPlayer() throws Exception {
 		TeamPlayer newTeamPlayer = new TeamPlayer("Joe", "Bloggs");
@@ -92,7 +108,7 @@ public class PlayerControllerIntegrationTest {
 		updatedTeamPlayer.setId(this.id);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/teamPlayers/updatePlayer?id=" + this.id)
+				.perform(request(HttpMethod.PUT, "/teamPlayers/updatePlayer/" + this.id)
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(this.mapper.writeValueAsString(newTeamPlayer)))

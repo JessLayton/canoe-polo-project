@@ -6,6 +6,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -37,6 +38,8 @@ public class PlayerControllerUnitTest {
 	
 	@Before
 	public void init() {
+		this.playerList = new ArrayList<>();
+		this.playerList.add(testPlayer);
 		this.testPlayer = new TeamPlayer("Lady", "Gaga");
 		this.testPlayerWithID = new TeamPlayer(testPlayer.getFirstName(), testPlayer.getSurname());
 		this.testPlayerWithID.setId(id);
@@ -74,7 +77,7 @@ public class PlayerControllerUnitTest {
 
 		assertFalse("Controller has found no players", this.playerController.getAllPlayer().isEmpty());
 
-		verify(playerService, times(2)).getAllPlayer();
+		verify(playerService, times(1)).getAllPlayer();
 	}
 
 	@Test

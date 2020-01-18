@@ -40,19 +40,19 @@ public class GamePlannerServiceUnitTest {
 	
 	final long gameId = 1L;
 	
-	private TeamPlayer player;
+	private TeamPlayer testPlayer;
 	
-	private List<TeamPlayer> team;
+	private List<TeamPlayer> playerList;
 	
 		
 	@Before
 	public void init() {
 		this.gameList = new ArrayList<>();
-		this.team = new ArrayList<>();
+		this.playerList = new ArrayList<>();
 		this.gameList.add(testGamePlan);
-		this.player = new TeamPlayer("Luke", "Cottenham");
-		this.team.add(player);
-		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", team);
+		this.testPlayer = new TeamPlayer("Luke", "Cottenham");
+		this.playerList.add(testPlayer);
+		this.testGamePlan = new GamePlan(LocalDate.of(2014, 4, 16), "MUCC", "Salford", playerList);
 		this.testGamePlanWithID = new GamePlan(testGamePlan.getGameDate(), testGamePlan.getOpposition(), testGamePlan.getLocation(), testGamePlan.getTeam());
 		this.testGamePlanWithID.setGameId(gameId);
 	}
@@ -92,7 +92,7 @@ public class GamePlannerServiceUnitTest {
 
 		assertFalse("No games found", this.service.getAllGamePlan().isEmpty());
 
-		verify(repo, times(2)).findAll();
+		verify(repo, times(1)).findAll();
 	}
 
 	@Test

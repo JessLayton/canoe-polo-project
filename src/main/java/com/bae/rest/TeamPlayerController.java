@@ -39,8 +39,8 @@ public class TeamPlayerController {
         return this.playerService.addNewPlayer(player);
     }
       
-    @PutMapping("/updatePlayer")
-	public TeamPlayer updatePlayer(@PathParam("id") Long id, @RequestBody TeamPlayer player) {
+    @PutMapping("/updatePlayer/{id}")
+	public TeamPlayer updatePlayer(@PathVariable("id") Long id, @RequestBody TeamPlayer player) {
 		return this.playerService.updatePlayer(player, id);
 	}
 

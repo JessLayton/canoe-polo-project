@@ -17,6 +17,7 @@ function deletePlayer() {
 					})
 					.catch(function (error) {
 						console.log(error);
+						alert("Cannot delete player used in gameplan")
 					});
 			}
 		}

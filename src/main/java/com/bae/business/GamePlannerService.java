@@ -57,15 +57,7 @@ public class GamePlannerService {
 		this.plannerRepo.deleteById(gameId);
 		return this.plannerRepo.existsById(gameId);
 	}
-	
-	public GamePlan updateGamePlanTeam(Long gameId, List<Long> playerids) {
-		GamePlan toUpdate = findGamePlanByID(gameId);
-		for (Long playerid: playerids) {
-			TeamPlayer player = this.playerService.findPlayerByID(playerid);
-			toUpdate.getTeam().add(player);
-		}
-		return this.plannerRepo.saveAndFlush(toUpdate);
-	}
 }
+	
 
 

@@ -25,7 +25,7 @@ import com.bae.persistence.repo.TeamPlayerRepository;
 public class TeamPlayerServiceUnitTest {
 	
 	@InjectMocks
-	private TeamPlayerService service;
+	private TeamPlayerService playerService;
 	
 	@Mock
 	private TeamPlayerRepository repo;
@@ -51,7 +51,7 @@ public class TeamPlayerServiceUnitTest {
 	public void addNewPlayerTest() {
 		when(this.repo.save(testTeamPlayer)).thenReturn(testTeamPlayerWithID);
 
-		assertEquals(this.testTeamPlayerWithID, this.service.addNewPlayer(testTeamPlayer));
+		assertEquals(this.testTeamPlayerWithID, this.playerService.addNewPlayer(testTeamPlayer));
 
 		verify(this.repo, times(1)).save(this.testTeamPlayer);
 	}
@@ -60,7 +60,7 @@ public class TeamPlayerServiceUnitTest {
 	public void deleteTeamPlayerTest() {
 		when(this.repo.existsById(id)).thenReturn(true, false);
 
-		this.service.deletePlayer(id);
+		this.playerService.deletePlayer(id);
 
 		verify(this.repo, times(1)).deleteById(id);
 		verify(this.repo, times(2)).existsById(id);
@@ -70,7 +70,7 @@ public class TeamPlayerServiceUnitTest {
 	public void findTeamPlayerByIDTest() {
 		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testTeamPlayerWithID));
 
-		assertEquals(this.testTeamPlayerWithID, this.service.findPlayerByID(this.id));
+		assertEquals(this.testTeamPlayerWithID, this.playerService.findPlayerByID(this.id));
 
 		verify(this.repo, times(1)).findById(this.id);
 	}
@@ -80,7 +80,7 @@ public class TeamPlayerServiceUnitTest {
 
 		when(repo.findAll()).thenReturn(this.playerList);
 
-		assertFalse("No players found", this.service.getAllPlayer().isEmpty());
+		assertFalse("No players found", this.playerService.getAllPlayer().isEmpty());
 
 		verify(repo, times(1)).findAll();
 	}
@@ -96,7 +96,7 @@ public class TeamPlayerServiceUnitTest {
 		
 		when(this.repo.save(updatedTeamPlayer)).thenReturn(updatedTeamPlayer);
 
-		assertEquals(updatedTeamPlayer, this.service.updatePlayer(newTeamPlayer, this.id));
+		assertEquals(updatedTeamPlayer, this.playerService.updatePlayer(newTeamPlayer, this.id));
 
 		verify(this.repo, times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedTeamPlayer);
