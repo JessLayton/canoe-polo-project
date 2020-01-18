@@ -3,7 +3,7 @@
 ## Index ##
 * [Intro](#intro)
 * [Features](#features)
-* [Testing](#testing)
+* [Status](#status)
 * [Deployment](#deployment)
 * [Technolgies](#technologies)
 * [Support](#support)
@@ -33,7 +33,7 @@ Players can be updated
 * Delete: 
 Players and games can be deleted
 
-<a name="testing"></a>
+<a name="status"></a>
 ### Status ###
 
 Unit testing: JUnit and Mockito tests - 80.1 % coverage (See [SureFire Report Summary](https://github.com/JessLayton/canoe-polo-project/blob/refactor/docs/Surefire%20report.pdf))
