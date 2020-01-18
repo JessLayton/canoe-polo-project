@@ -24,8 +24,8 @@ view, delete and update the players and to create, view and delete games.
 Can create new players and new game plans
 
 * Read: 
- * Players are displayed in a select box where they can be selected to add to gameplans.
- * Games are displayed in the game plan table where new rows are dynamically created when a game is added.
+  * Players are displayed in a select box where they can be selected to add to gameplans.
+  * Games are displayed in the game plan table where new rows are dynamically created when a game is added.
 
 * Update: 
 Players can be updated
@@ -34,11 +34,13 @@ Players can be updated
 Players and games can be deleted
 
 <a name="testing"></a>
-### Testing ###
+### Status ###
 
 Unit testing: JUnit and Mockito tests - 80.1 % coverage (See [SureFire Report Summary](https://github.com/JessLayton/canoe-polo-project/blob/refactor/docs/Surefire%20report.pdf))
 
 SonarQube: static reporting and refactoring - Build = pass
+
+Version Number: 0.0.1-SNAPSHOT
 
 <a name="deployment"></a>
 ### Deployment ###
@@ -46,6 +48,9 @@ SonarQube: static reporting and refactoring - Build = pass
 Jenkins was used to automate the build, test and deployment processes, with a webhook to GitHub which was triggered 
 with every push event.
 
+To access the app, navigate to the address:
+
+http://3.11.57.184:8181/canoe-polo-app
 
 <a name="technologies"></a>
 ## Technologies ##
