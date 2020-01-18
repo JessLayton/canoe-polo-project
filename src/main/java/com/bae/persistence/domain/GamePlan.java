@@ -74,15 +74,6 @@ public class GamePlan {
 				+ ", opposition = " + opposition + ", location = " + location + ", team: " + team + "]";
 	}
 	
-	/*
-	 * @Override public int hashCode() { final int prime = 31; int result = 1;
-	 * result = prime * result + ((gameDate == null) ? 0 : gameDate.hashCode());
-	 * result = prime * result + ((location == null) ? 0 : location.hashCode());
-	 * result = prime * result + ((opposition == null) ? 0 : opposition.hashCode());
-	 * result = prime * result + ((team == null) ? 0 : team.hashCode()); return
-	 * result; }
-	 */
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
