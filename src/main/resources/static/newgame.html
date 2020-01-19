@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>Canoe Polo Planner</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body onload="populateSelect('playerList')">
+	<div id="nav">
+		<div class="topnav">
+			<a class="active" href="index.html">Home</a> 
+		</div>
+	</div>
+
+	<div id="container">
+
+		<form id="newGameForm" onsubmit="newGame();return false">
+			<div class="form-group">
+				<h2>ADD GAME</h2>
+				<br>
+				<h4>Date:</h4>
+				<br> <input id="InputDate" type="date" class="form-control" aria-describedby="GameDate"> <br>
+			</div>
+			<div class="form-group">
+				<h4>Opposition:</h4>
+				<input type="text" class="form-control" id="InputOpposition" maxlength="30" autocomplete=“off”>
+			</div>
+			<br>
+			<div class="form-group">
+				<h4>Location:</h4>
+				<input type="text" class="form-control" id="InputLocation" maxlength="30" autocomplete=“off”>
+			</div>
+			<br>
+			<div class="form-group">
+				<h4>Add Team Players:</h4>
+				<select id="playerList" class="custom-select" multiple>
+					<option id="0" value="0" disabled>Choose 5 players for team</option>
+				</select>
+			</div>
+
+			<br>
+
+			<div style="width: 10%; float: right;">
+				<input class="button" type="submit" value="Submit">
+			</div>
+
+		</form>
+		<br>
+
+		<div style="width: 10%; float: left;">
+			<button class="button"
+				onclick="window.location.href='newplayer.html'">Add player
+			</button>
+		</div>
+
+		<div style="width: 15%; float: left;">
+			<button class="button"
+				onclick="window.location.href='updateplayer.html'">Update
+				player</button>
+		</div>
+
+		<div style="width: 18%; float: left;">
+			<button class="button" onclick="deletePlayer()">Delete
+				Players</button>
+		</div>
+
+		<br> <br>
+
+		<div>
+
+			<button class="home-button" onclick="location.href='index.html'">
+				Back</button>
+		</div>
+
+	</div>
+
+
+
+
+	<script src="newplayer.js"></script>
+	<script src="deleteplayer.js"></script>
+	<script src="newgame.js"></script>
+
+</body>
+
+</html>

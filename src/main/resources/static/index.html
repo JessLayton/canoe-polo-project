@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="utf-8" />
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<title>Canoe Polo Planner</title>
+<meta charset="utf-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="populateTable()">
+	<div class="topnav">
+		<a class="active" href="index.html">Home</a>
+	</div>
+
+	<div id="container">
+		<div style="width: 66%; float: left;">
+			<h1>MUCC Canoe Polo</h1>
+			<br />
+			<h2>GAME PLANNER</h2>
+		</div>
+
+		<div style="width: 33%; float: left;">
+			<img
+				src="http://manunicanoe.club/wp-content/uploads/2016/09/MUCCLogo.png"
+				alt="MUCC Logo" class="logo"> <br>
+		</div>
+		<div>
+			<table id="plannerTable" class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Date</th>
+						<th>Opposition</th>
+						<th>Location</th>
+						<th>Team</th>
+					</tr>
+			</table>
+			<hr>
+		</div>
+
+
+		<div style="width: 10%; float: right;">
+			<button class="button" onclick="location.href='newgame.html'">
+				Add Game</button>
+		</div>
+
+		<br /> <br />
+
+
+		<div style="width: 10%; float: right;">
+			<button class="button" onclick="deleteGame();">Delete Games
+			</button>
+		</div>
+
+	</div>
+
+	<script src="newgame.js"></script>
+	<script src="deletegame.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

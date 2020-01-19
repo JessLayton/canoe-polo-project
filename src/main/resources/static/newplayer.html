@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>Canoe Polo Planner</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+	<div class="topnav">
+		<a class="active" href="index.html">Home</a>
+	</div>
+
+
+	<div id="container">
+
+
+		<form id="addPlayerForm" action="#">
+			<div class="form-group">
+				<h2>ADD PLAYER</h2>
+				<br>
+				<h4>First Name:</h4>
+				<br> <input type="text" class="form-control"
+					id="InputFirstName" maxlength="15" autocomplete=“off” /> <br>
+			</div>
+			<div class="form-group">
+				<h4>Surname:</h4>
+				<input type="text" class="form-control" id="InputSurname"
+					maxlength="15" autocomplete=“off” />
+			</div>
+
+			<ul id="selectedPlayers"></ul>
+
+
+			<br>
+
+
+			<div style="width: 10%; float: right;">
+				<input class="button" type="submit" value="Add New Player"
+					onclick="createPlayer()">
+			</div>
+
+
+		</form>
+
+		<br>
+
+		<div>
+			<button class="button" onclick="location.href='newgame.html'">
+				Back</button>
+		</div>
+
+	</div>
+
+
+
+	<script src="newplayer.js"></script>
+	<script src="deleteplayer.js"></script>
+
+</body>
+
+</html>
