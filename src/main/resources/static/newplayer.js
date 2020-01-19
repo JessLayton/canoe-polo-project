@@ -3,7 +3,7 @@
 function createPlayer() {
     let firstName = document.getElementById("InputFirstName").value;
     let surname = document.getElementById("InputSurname").value;
-    const newPlayerUrl = 'http://localhost:8081/teamPlayers/addPlayer';
+    const newPlayerUrl = '/canoe-polo-app/teamPlayers/addPlayer';
     let data = { "firstName": firstName, "surname": surname };
     axios.post(newPlayerUrl, data)
         .then((response) => {
@@ -19,18 +19,14 @@ function createPlayer() {
 }
 
 function populateSelect(elementToPopulate) {
-    const getNewPlayersUrl = 'http://localhost:8081/teamPlayers/getAllPlayers';
     
-
-    axios.get(getNewPlayersUrl)
+    axios.get('/canoe-polo-app/teamPlayers/getAllPlayers')
         .then((response) => {
             addToScreen(response.data, elementToPopulate);
             console.log(response);
         })
-        //redirect back
-        .catch(e => {
-            console.log(e);
-            //refresh with ?error
+        .catch(error => {
+            console.log(error);
         });
 
 }
