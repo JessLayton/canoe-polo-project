@@ -15,15 +15,16 @@ function newGame() {
         .then((response) => {
             console.log(response.data.gamePlanId);                        	
         })
-        .catch(e => {
-            console.log(e);
+        .catch(error => {
+        	alert("Game added");
+            console.log(error);
         });
     }
     else if (team.length > 5) {
-    	alert("Too many players added!")
+    	alert("Too many players added!");
     }
     else {
-    	alert("Too few players added!")
+    	alert("Too few players added!");
     }
 }
 
@@ -38,8 +39,8 @@ function populateTable() {
             console.log(response);
         })
 
-        .catch(e => {
-            console.log(e);
+        .catch(error => {
+            console.log(error);
 
         });
 
