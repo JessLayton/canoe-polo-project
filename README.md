@@ -20,7 +20,7 @@ it is possible to create, view, delete and update the players and to create, vie
 ### Entity Relationship Diagram ###
 
 <p align="center">
-  <img width="460" height="300" src="">
+  <img width="460" height="300" src="https://github.com/JessLayton/canoe-polo-project/blob/refactor/docs/ERD.png">
 </p>
 
 <a name="features"></a>
