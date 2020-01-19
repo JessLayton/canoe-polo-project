@@ -17,6 +17,12 @@ location, opposition and players in the team. There is a many to many relationsh
 a connecting joiner table so all the players can be added to more than one game. There is CRUD functionality as 
 it is possible to create, view, delete and update the players and to create, view and delete games.
 
+### Entity Relationship Diagram ###
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/JessLayton/canoe-polo-project/blob/refactor/docs/ERD.png">
+</p>
+
 <a name="features"></a>
 ## Features - CRUD ##
 
