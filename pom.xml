@@ -13,7 +13,7 @@
 	<artifactId>CanoPoloApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CanoePoloApp</name>
-	<packaging>war</packaging>
+	
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -35,9 +35,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+   			 <groupId>mysql</groupId>
+   			 <artifactId>mysql-connector-java</artifactId>
+   			 <version>8.0.18</version>
 		</dependency>
 
 		<dependency>
@@ -76,19 +76,18 @@
 
 	</dependencies>
 
-	<build>
-		<finalName>${project.artifactId}</finalName>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<configuration>
-						<executable>true</executable>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+<distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>maven-releases</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>maven-snapshots</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>	
 
-</project>
+
+	</project>
