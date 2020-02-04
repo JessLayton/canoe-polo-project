@@ -44,11 +44,11 @@ public class SeleniumTest {
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		ChromeOptions options = new ChromeOptions();
-		options.setHeadless(true);
+		//options.setHeadless(true);
 		this.driver = new ChromeDriver(options);
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//		this.addPlayerStage = new AddPlayerStage(this.driver);
+		this.addPlayerStage = new AddPlayerStage(this.driver);
 		this.addPlayerStage = PageFactory.initElements(this.driver, AddPlayerStage.class);
 		player.add("John");
 		player.add("Smith");
