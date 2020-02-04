@@ -13,7 +13,7 @@
 	<artifactId>CanoPoloApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CanoePoloApp</name>
-	
+
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -35,9 +35,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-   			 <groupId>mysql</groupId>
-   			 <artifactId>mysql-connector-java</artifactId>
-   			 <version>8.0.18</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.18</version>
 		</dependency>
 
 		<dependency>
@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -72,31 +72,31 @@
 			<version>3.0.0-M4</version>
 			<type>maven-plugin</type>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
-        </dependency>
-		
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.200</version>
+		</dependency>
+
 
 	</dependencies>
 
-		<build>
-                <plugins>
-                        <plugin>
-                                <groupId>org.springframework.boot</groupId>
-                                <artifactId>spring-boot-maven-plugin</artifactId>
-                        </plugin>
-                </plugins>
-        </build>	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 	<distributionManagement>
-	        <snapshotRepository>
-				<id>nexus</id>
-				<name>nexus-snapshot</name>
-				<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
-			</snapshotRepository>
-		</distributionManagement>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>nexus-snapshot</name>
+			<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
-	</project>
+</project>
