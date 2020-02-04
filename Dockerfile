@@ -12,6 +12,6 @@ FROM java:8
 
 WORKDIR /docker_myproject
 
-COPY --from=0 /canoe-polo-project/target/CanoPoloApp-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=0 /canoe-polo-project/target/CanoePoloApp-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["/usr/bin/java", "-jar", "app.jar"]
