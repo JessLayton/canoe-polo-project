@@ -72,6 +72,7 @@
 			<version>3.0.0-M4</version>
 			<type>maven-plugin</type>
 		</dependency>
+		
 
 	</dependencies>
 
@@ -84,5 +85,12 @@
                 </plugins>
         </build>	
 
+	<distributionManagement>
+	        <snapshotRepository>
+				<id>nexus</id>
+				<name>nexus-snapshot</name>
+				<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
+			</snapshotRepository>
+		</distributionManagement>
 
 	</project>
