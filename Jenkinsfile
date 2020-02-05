@@ -11,17 +11,17 @@ pipeline {
             }
             stage('--Build back-end--') {
                 steps {
-                    sh "docker build -t app-test ."
+                    sh "docker build -t 9953136/app-test ."
                     }
             }
         stage('--Dockerise--') {
               steps {
-                    sh "docker login -u ${DOCKER_USER_USR} -p ${DOCKER_USER_PSW}"
-                    sh "docker tag app-test 9953136/app-test"
+                    withDockerRegistry([ credentialsId: "docker-login", url: "" ]) {
                     sh "docker push 9953136/app-test"
                     }
-                    
               }
+                    
+         }
               stage('--Deploy--') {
               steps {
               	withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'back-end-ssh', keyFileVariable: 'SSH-KEY')]) {
