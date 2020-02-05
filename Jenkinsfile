@@ -24,8 +24,7 @@ pipeline {
               }
               stage('--Deploy--') {
               steps {
-              	withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'back-end-ssh', \ 
-              	keyFileVariable: 'SSH-KEY')]) {
+              	withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'back-end-ssh', keyFileVariable: 'SSH-KEY')]) {
               	    sh "ssh -i ${SSH-KEY} ubuntu@ec2-35-176-148-54.eu-west-2.compute.amazonaws.com"
               	sh "touch deploy.sh"
               	sh "echo hello >> deploy.sh"
